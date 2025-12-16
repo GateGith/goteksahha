@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ARC161 Posture Harness – حزام ظهر شبه طبي</title>
+
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #020617;
+      --card: #020617;
+      --accent: #22c55e;
+      --accent-dark: #16a34a;
+      --accent-soft: rgba(34, 197, 94, 0.14);
+      --primary-blue: #0ea5e9;
+      --text-main: #f9fafb;
+      --text-soft: #cbd5f5;
+      --border: #1f2937;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #0b1120, #020617 55%),
+        radial-gradient(circle at bottom, #022c22, #020617 70%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 18px 12px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 980px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #020617, #020617);
+      border-radius: 26px;
+      padding: 22px 18px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      box-shadow:
+        0 28px 80px rgba(15, 23, 42, 0.95),
+        0 0 0 1px rgba(15, 23, 42, 0.7);
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .hero-media {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #020617;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .hero-media img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      max-height: 420px;
+    }
+
+    .hero-media-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top, rgba(14, 165, 233, 0.2), transparent 55%),
+        radial-gradient(circle at bottom, rgba(34, 197, 94, 0.16), transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-text {
+      position: relative;
+      padding: 4px;
+    }
+
+    .top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--primary-blue);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
+    }
+
+    .handle {
+      opacity: 0.9;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: rgba(15, 118, 110, 0.22);
+      color: #a5f3fc;
+      border: 1px solid rgba(34, 211, 238, 0.5);
+    }
+
+    .badge span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 28px;
+    }
+
+    .subhead {
+      font-size: 14px;
+      color: var(--text-soft);
+      margin: 0 0 10px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--accent);
+    }
+
+    .old-price {
+      font-size: 13px;
+      color: #9ca3af;
+      text-decoration: line-through;
+    }
+
+    .info-line {
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    .cta-main {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      border-radius: 999px;
+      padding: 12px 16px;
+      border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #020617;
+      font-size: 15px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow:
+        0 18px 40px rgba(34, 197, 94, 0.58),
+        0 0 0 1px rgba(34, 197, 94, 0.5);
+      letter-spacing: 0.02em;
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px);
+      box-shadow: 0 8px 18px rgba(34, 197, 94, 0.45);
+    }
+
+    .btn-secondary-text {
+      font-size: 11px;
+      color: #9ca3af;
+      text-align: center;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(75, 85, 99, 0.85);
+      font-size: 11px;
+      color: #e5e7eb;
+    }
+
+    .grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .card-soft {
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.95), #020617);
+      border-radius: 18px;
+      padding: 12px 14px;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      font-size: 13px;
+    }
+
+    .card-soft h2 {
+      margin: 0 0 6px;
+      font-size: 16px;
+    }
+
+    ul {
+      margin: 6px 0;
+      padding-right: 18px;
+    }
+
+    li { margin-bottom: 4px; }
+
+    .faq-item {
+      background: #020617;
+      border-radius: 12px;
+      padding: 10px 12px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+
+    .faq-q {
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .bottom-cta {
+      margin-top: 18px;
+      border-radius: 18px;
+      padding: 12px 14px;
+      background:
+        linear-gradient(145deg, rgba(34, 197, 94, 0.18), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(34, 197, 94, 0.6);
+    }
+
+    .bottom-cta p {
+      margin: 0 0 8px;
+      font-size: 13px;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 12px;
+    }
+
+    @media (min-width: 760px) {
+      .card { padding: 24px 22px; }
+      .hero { flex-direction: row; gap: 22px; }
+      .hero-media, .hero-text { flex: 1; }
+      h1 { font-size: 30px; }
+      .grid { grid-template-columns: 1.1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="container">
+      <main class="card">
+
+        <!-- HERO -->
+        <section class="hero">
+          <!-- صورة المنتج الرئيسية -->
+          <div class="hero-media">
+            <img src="https://www.armororthopedics.com/dosyalar/urunler/img_13.jpg"
+                 alt="ARC161 Posture Harness – حزام ظهر شبه طبي" />
+            <div class="hero-media-overlay"></div>
+          </div>
+
+          <!-- نص أعلى الصفحة -->
+          <div class="hero-text">
+            <div class="top-row">
+              <div class="brand">
+                <span class="brand-dot"></span>
+                gotek_sahha
+              </div>
+              <div class="handle">
+                TikTok: @gotek_sahha
+              </div>
+            </div>
+
+            <div class="badge-row">
+              <div class="badge">
+                <span class="dot"></span>
+                منتج شبه طبي لدعم وتقويم الظهر
+              </div>
+              <div class="badge">
+                ARC161 Posture Harness من ARMOR Orthopedics
+              </div>
+            </div>
+
+            <h1>حزام ظهر، قعدة مريحة، حياة أخف</h1>
+
+            <p class="subhead">
+              ظهرك يتعب بعد كل يوم قعدة؟ ARC161 Posture Harness يساعد على إعادة
+              تدريب جسمك على قومة صحّية، مع دعم مدروس للفقرات والكتاف حتى تكمل
+              نهارك بطاقة وثقة.
+            </p>
+
+            <div class="price-row">
+              <div class="price">3,999 دج</div>
+              <div class="old-price">4,599 دج</div>
+            </div>
+
+            <div class="info-line">
+              التوصيل متوفر لكل ولايات الجزائر – الدفع عند الاستلام بعد ما تشوف المنتج.
+            </div>
+
+            <div class="cta-main">
+              <a class="btn-primary"
+                 href="https://wa.me/213778603451?text=سلام، حاب نطلب ARC161 Posture Harness من gotek_sahha">
+                اطلب الآن على واتساب 0778603451
+              </a>
+              <div class="btn-secondary-text">
+                رسالة قصيرة تكفي: نجاوبك بالمقاس المناسب، طريقة الاستعمال، وكل تفاصيل التوصيل.
+              </div>
+            </div>
+
+            <div class="pill-list">
+              <span class="pill">طلاب وموظفون يقعدون بالساعات</span>
+              <span class="pill">Gamers وسائقو مسافات طويلة</span>
+              <span class="pill">آلام أعلى الظهر والكتاف بسبب القعدة</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- الألم + الفوائد / صورة إضافية + لمن؟ -->
+        <section class="grid">
+          <article class="card-soft">
+            <h2>ليش هذا الحزام مختلف؟</h2>
+            <p>
+              ARC161 Posture Harness مصنّف كمنتج شبه طبي، مصمَّم لدعم الفقرات
+              الظهرية والكتاف بشكل موزون حتى يخفّ الضغط على العضلات ويقلّ
+              الإحساس بالتعب مع نهاية اليوم.
+            </p>
+            <ul>
+              <li>يدعم الظهر العلوي والكتاف بدون ضغط مزعج على الرقبة أو الصدر.</li>
+              <li>يساعد جسمك يتعلّم تدريجيًا على قومة مستقيمة حتى بعد نزع الحزام.</li>
+              <li>مادة تنفّس عالية الجودة، تقدر تلبسو تحت التيشيرت بثقة في الصيف والشتاء.</li>
+            </ul>
+          </article>
+
+          <article class="card-soft">
+            <!-- صورة ثانية لشرح أفضل -->
+            <img src="https://www.armororthopedics.com/dosyalar/urunler/img_1_13.jpg"
+                 alt="ARC161 طريقة اللبس" style="width:100%; border-radius:14px; margin-bottom:8px;" />
+            <h2>كيف تستعمله بذكاء؟</h2>
+            <ul>
+              <li>البسه فوق ملابس خفيفة، وعدّل الأشرطة حتى تحس بدعم ثابت ومريح.</li>
+              <li>ابدأ من 30–60 دقيقة في اليوم، ثم زد الوقت حسب استجابة جسمك.</li>
+              <li>استعمله في أوقات التركيز: الدراسة، العمل، اللعب أو السياقة لمسافات طويلة.</li>
+            </ul>
+            <h2 style="margin-top:10px;">لمَن نوصّي به؟</h2>
+            <ul>
+              <li>أي شخص يقعد بالساعات قدّام شاشة ويحس بالتقويس والإرهاق في آخر اليوم.</li>
+              <li>أشخاص يريدون تحسين صورتهم الجسدية وقومتهم بدون حلول معقّدة أو مكلفة.</li>
+              <li>اللي حابين يبدؤوا خطوة استباقية لحماية ظهرهم قبل ما تتفاقم المشكلة.</li>
+            </ul>
+          </article>
+        </section>
+
+        <!-- FAQ -->
+        <section style="margin-top:20px;">
+          <h2 style="font-size:17px; margin-bottom:8px;">أسئلة شائعة قبل ما تطلب</h2>
+
+          <div class="faq-item">
+            <div class="faq-q">هل ARC161 يغني عن زيارة الطبيب؟</div>
+            <div>
+              لا، هو منتج شبه طبي يساعد على تحسين القومة وتخفيف الضغط اليومي،
+              لكنه لا يعوّض تشخيص أو متابعة طبيب مختص، خصوصًا في حالات الألم الشديد
+              أو الإصابات القديمة.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">ماذا عن المقاس؟</div>
+            <div>
+              الحزام مقاس واحد قابل للتعديل بأشرطة مرنة، يناسب أغلب الرجال والنساء.
+              لو حاب تتأكد أكثر، ابعث طولك ووزنك على واتساب 0778603451 وسنقترح
+              عليك أفضل طريقة للضبط.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">كيف يتم التوصيل والدفع؟</div>
+            <div>
+              نرسل الحزام عبر شركة توصيل إلى باب البيت في أغلب ولايات الجزائر،
+              والدفع يكون عند الاستلام بعد ما تتأكد من سلامة المنتج.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">كيف أنظّف الحزام وأحافظ عليه؟</div>
+            <div>
+              يُنصح بغسله يدويًا بماء فاتر وصابون لطيف، بدون عصر قوي أو مجفف،
+              ويُترك ليجف في الظل حتى يحافظ على مرونته وشكله ودعمه.
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA أخير -->
+        <section class="bottom-cta">
+          <p>
+            لو حاب تبدأ أول خطوة جدّية مع ظهرك اليوم، ARC161 Posture Harness من
+            <strong>gotek_sahha</strong> يعطيك حل بسيط وعملي، تقدر توقفه أو تكمله
+            وقت ما تحب.
+          </p>
+          <a class="btn-primary"
+             href="https://wa.me/213778603451?text=سلام، حاب نطلب ARC161 Posture Harness من gotek_sahha">
+            اطلب الآن على واتساب 0778603451
+          </a>
+        </section>
+
+        <p class="footer-note">
+          ملاحظة مهمة: هذا المنتج شبه طبي يساعد على دعم وتقويم الظهر، ولا يُعتبر بديلاً عن
+          الاستشارة الطبية أو العلاج الموصوف من طرف الأطباء المتخصصين.
+        </p>
+      </main>
+    </div>
+  </div>
+</body>
+  </html>
+  
