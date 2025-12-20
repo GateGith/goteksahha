@@ -1,13 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>ARC161 Posture Harness – حزام ظهر شبه طبي</title>
+  <title>ARC161 – حزام ظهر شبه طبي لتصحيح القعدة</title>
 
   <style>
     :root {
-      /* ألوان شبه طبية: أزرق فاتح + أخضر صحة + أبيض */
       --bg-top: #e0f2fe;
       --bg-bottom: #f9fafb;
       --card: #ffffff;
@@ -25,21 +25,20 @@
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top, rgba(14, 165, 233, 0.22), transparent 55%),
+        radial-gradient(circle at top, rgba(14, 165, 233, 0.18), transparent 55%),
         radial-gradient(circle at bottom, rgba(34, 197, 94, 0.16), transparent 60%),
         linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
       color: var(--text-main);
       line-height: 1.6;
       min-height: 100vh;
       display: flex;
-      align-items: center;   /* في وسط الشاشة عموديًا */
-      justify-content: center; /* في وسط الشاشة أفقيًا */
+      align-items: center;
+      justify-content: center;
     }
 
-    /* الحاوية كلها بعرض موبايل */
     .wrapper {
       width: 100%;
-      max-width: 430px;      /* يشبه عرض الهاتف */
+      max-width: 430px;
       padding: 12px;
     }
 
@@ -53,10 +52,7 @@
         0 0 0 1px rgba(148, 163, 184, 0.4);
     }
 
-    /* كل شيء في الوسط */
-    .center {
-      text-align: center;
-    }
+    .center { text-align: center; }
 
     .hero-img-wrap {
       position: relative;
@@ -119,7 +115,7 @@
       justify-content: center;
       align-items: baseline;
       gap: 8px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .price {
@@ -132,6 +128,12 @@
       font-size: 12px;
       color: #9ca3af;
       text-decoration: line-through;
+    }
+
+    .saving {
+      font-size: 11px;
+      color: #16a34a;
+      margin-bottom: 8px;
     }
 
     .info-line {
@@ -216,6 +218,58 @@
       font-size: 10px;
       color: #9ca3af;
     }
+
+    /* نموذج الطلب البسيط */
+    .order-form {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 16px;
+      background: #f9fafb;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      text-align: start;
+    }
+
+    .order-form label {
+      display: block;
+      font-size: 11px;
+      color: #4b5563;
+      margin-bottom: 3px;
+    }
+
+    .order-form input,
+    .order-form textarea,
+    .order-form select {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      padding: 7px 9px;
+      font-family: inherit;
+      font-size: 12px;
+      margin-bottom: 7px;
+    }
+
+    .order-form textarea {
+      min-height: 50px;
+      resize: vertical;
+    }
+
+    .order-form button {
+      width: 100%;
+      margin-top: 4px;
+      border-radius: 999px;
+      padding: 9px 12px;
+      border: none;
+      background: linear-gradient(135deg, var(--primary-blue), #0284c7);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .order-form button:active {
+      transform: translateY(1px);
+    }
+
   </style>
 </head>
 <body>
@@ -232,15 +286,15 @@
       <!-- البادج -->
       <div class="badge">
         <span class="dot"></span>
-        منتج شبه طبي لدعم وتقويم الظهر
+        منتج شبه طبي لدعم وتقويم الظهر في الجلوس اليومي
       </div>
 
       <!-- العنوان والنص -->
-      <h1>حزام واحد يهتم بظهرك… أو بظهر شخص تحبه</h1>
+      <h1>قعدة مريحة، ظهر مستقيم مع ARC161</h1>
 
       <p class="subhead">
-        ARC161 Posture Harness يساعد على تقويم الظهر والكتاف بهدوء،
-        سواء لك أنت أو لشخص من عائلتك أو صديق تعرف أن ظهره يتعب من القعدة.
+        حزام ARC161 يساعدك تصحّح القعدة وتخفّف الضغط على أسفل الظهر والكتفين
+        في المكتب، الدراسة أو السياقة – بدون أدوية أو أجهزة معقّدة.
       </p>
 
       <!-- السعر في الوسط -->
@@ -248,50 +302,64 @@
         <div class="price">3,999 دج</div>
         <div class="old-price">4,599 دج</div>
       </div>
+      <div class="saving">تخفيض محدود في العدد – الدفع عند الاستلام.</div>
 
       <div class="info-line">
-        التوصيل لكل ولايات الجزائر – الدفع عند الاستلام بعد المعاينة.
+        التوصيل لكل ولايات الجزائر – يمكنك المعاينة قبل الدفع.
       </div>
 
-      <!-- زر واتساب -->
-      <a class="btn-primary"
-         href="https://wa.me/213778603451?text=سلام، حاب ARC161 Posture Harness لي أو لشخص قريب مني">
-        اطلب الآن على واتساب 0778603451
-      </a>
-
-      <div class="hint">
-        اكتب فقط: "السلام، مهتم بالحزام" وسنرد عليك بالتفاصيل خلال وقت قصير.
-      </div>
-
-      <!-- شرح مختصر -->
-      <h2 class="section-title">ماذا يفعل الحزام؟</h2>
+      <!-- قسم: ماذا يفعل الحزام -->
+      <h2 class="section-title">ماذا سيتغير عندك؟</h2>
       <p class="text-small">
-        يوزّع الضغط على أعلى الظهر والكتاف، فيخفّ الشد اليومي وتبدأ القومة تتحسن
-        تدريجيًا مع الاستعمال المنتظم.
+        الاستعمال المنتظم لـ ARC161 يساعد على:
       </p>
       <ul>
-        <li>دعم شبه طبي للفقرات الظهرية والكتاف، بدون إحراج تحت الملابس.</li>
-        <li>شعور أخف في نهاية اليوم، في الدراسة أو العمل أو السياقة.</li>
-        <li>هدية عملية لشخص واحد يهمك أن يرتاح من وجع الظهر.</li>
+        <li>تقليل انحناء الظهر والكتفين أثناء الجلوس أمام المكتب أو الهاتف.</li>
+        <li>تخفيف الشدّ اليومي على أعلى الظهر، فتشعر بخفة أكثر في نهاية اليوم.</li>
+        <li>تذكير جسمك بالقومة الصحيحة تدريجيًا بدون إزعاج أو لفت الانتباه تحت الملابس.</li>
       </ul>
 
-      <!-- طريقة الاستعمال + صورة ثانية -->
-      <h2 class="section-title">كيف يُستعمل ببساطة؟</h2>
+      <!-- صورة ثانية طريقة اللبس -->
+      <h2 class="section-title">طريقة الاستعمال في 3 خطوات</h2>
       <div class="hero-img-wrap" style="margin-bottom:6px;">
         <img src="https://www.armororthopedics.com/dosyalar/urunler/img_1_13.jpg"
              alt="طريقة لبس ARC161" />
         <div class="hero-img-overlay"></div>
       </div>
       <ul>
-        <li>يلبَس فوق ملابس خفيفة، تُشد الأشرطة حتى يكون ثابت ومريح.</li>
-        <li>يُستعمل 30–60 دقيقة في اليوم، ويمكن زيادة المدة حسب الراحة.</li>
+        <li>يلبَس فوق ملابس خفيفة، تشد الأشرطة حتى يكون ثابت ومريح، بدون خنق أو ألم.</li>
+        <li>ابدأ بـ 30–45 دقيقة في اليوم، ثم زِد المدة حسب إحساسك بالراحة.</li>
         <li>يناسب الرجال والنساء، ويمكن ضبطه لأكثر من شخص في البيت.</li>
       </ul>
 
+      <!-- نموذج الطلب -->
+      <div class="order-form">
+        <p class="text-small" style="margin-bottom:4px;">
+          املأ بياناتك الآن وسيتم التواصل معك لتأكيد الطلب والتوصيل:
+        </p>
+
+        <!-- هنا تضع أنت action للـ backend أو خدمة جمع الطلبات التي تستعملها -->
+        <form method="post" action="#">
+          <label for="name">الاسم الكامل</label>
+          <input id="name" name="name" type="text" required />
+
+          <label for="phone">رقم الهاتف</label>
+          <input id="phone" name="phone" type="tel" required />
+
+          <label for="wilaya">الولاية</label>
+          <input id="wilaya" name="wilaya" type="text" required />
+
+          <label for="notes">ملاحظة (مقاس، وقت مفضل للتواصل…)</label>
+          <textarea id="notes" name="notes"></textarea>
+
+          <button type="submit">إرسال الطلب الآن</button>
+        </form>
+      </div>
+
       <!-- دعوة أخيرة -->
       <div class="bottom-cta">
-        لو في بالك شخص واحد فقط – أنت أو أحد من أهلك أو أصدقائك – وتعرف أن ظهره
-        يتعب من القعدة… هذا الحزام خطوة صغيرة لكن تأثيرها يُحَسّ كل يوم.
+        لو تحس ظهرك يتعب من القعدة أمام المكتب أو الهاتف، تجربة ARC161
+        لأسابيع قليلة يمكن أن تكون الفرق بين يوم متعب ويوم أخف على ظهرك.
       </div>
 
       <div class="footer-note">
@@ -301,4 +369,3 @@
   </div>
 </body>
 </html>
-
