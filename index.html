@@ -1,5 +1,3 @@
-/body>
-</html>
 
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -10,13 +8,12 @@
 
   <style>
     :root {
-      /* لوحة ألوان صحية: أزرق ثقة + أخضر صحة + خلفية فاتحة */
-      --bg-top: #e0f7fa;          /* سماوي فاتح مريح */
-      --bg-bottom: #f5f7fb;       /* رمادي مزرق ناعم */
+      --bg-top: #e0f7fa;
+      --bg-bottom: #f5f7fb;
       --card: #ffffff;
-      --accent: #22c55e;          /* أخضر صحة */
+      --accent: #22c55e;
       --accent-dark: #16a34a;
-      --primary-blue: #2563eb;    /* أزرق ثقة وهدوء */
+      --primary-blue: #2563eb;
       --primary-blue-soft: #60a5fa;
       --text-main: #0f172a;
       --text-soft: #4b5563;
@@ -43,7 +40,7 @@
 
     .wrapper {
       width: 100%;
-      max-width: 430px;      /* يشبه عرض الهاتف */
+      max-width: 430px;
       padding: 12px;
       display: flex;
       justify-content: center;
@@ -58,12 +55,11 @@
         0 20px 50px rgba(15, 23, 42, 0.18),
         0 0 0 1px rgba(148, 163, 184, 0.25);
       width: 100%;
-      max-width: 410px;      /* حتى تظهر كأنها “بطاقة” في وسط الشاشة */
+      max-width: 410px;
     }
 
     .center { text-align: center; }
 
-    /* جاليري صور تُسحب يمين/يسار في وسط الشاشة */
     .hero-zone {
       display: flex;
       justify-content: center;
@@ -72,7 +68,7 @@
 
     .gallery-frame {
       width: 100%;
-      max-width: 360px;      /* يجعل الصور في وسط الهاتف تمامًا */
+      max-width: 360px;
       border-radius: 20px;
       border: 1px solid rgba(148, 163, 184, 0.75);
       overflow: hidden;
@@ -84,14 +80,6 @@
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
-    }
-
-    .gallery-track::-webkit-scrollbar {
-      height: 6px;
-    }
-    .gallery-track::-webkit-scrollbar-thumb {
-      background: rgba(148, 163, 184, 0.8);
-      border-radius: 999px;
     }
 
     .gallery-item {
@@ -218,6 +206,29 @@
 
     ul li { margin-bottom: 3px; }
 
+    .urgency-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      padding: 6px 10px;
+      border-radius: 14px;
+      background: rgba(248, 250, 252, 0.95);
+      border: 1px solid rgba(248, 181, 0, 0.5);
+      font-size: 11px;
+      color: #92400e;
+    }
+
+    .urgency-number {
+      font-weight: 700;
+      color: #b45309;
+    }
+
+    .timer {
+      font-weight: 700;
+      color: #dc2626;
+    }
+
     .trust-box {
       margin-top: 6px;
       padding: 8px 10px;
@@ -233,14 +244,6 @@
       font-weight: 600;
       margin-bottom: 4px;
       color: var(--primary-blue);
-    }
-
-    .trust-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 10px;
-      color: #6b7280;
-      margin-top: 4px;
     }
 
     .price-box {
@@ -277,13 +280,6 @@
       margin-bottom: 3px;
     }
 
-    .urgency {
-      font-size: 11px;
-      color: var(--danger);
-      font-weight: 600;
-      margin-bottom: 3px;
-    }
-
     .no-prepay {
       font-size: 11px;
       color: #4b5563;
@@ -302,7 +298,7 @@
       font-size: 13px;
       font-weight: 600;
       margin-bottom: 6px;
-      color: var(--primary-blue-dark);
+      color: #2563eb;
     }
 
     .order-form label {
@@ -406,18 +402,24 @@
 
       <div class="badge">
         <span class="dot-badge"></span>
-        منتج شبه طبي يساعد على دعم وتقويم الظهر في الجلوس اليومي
+        تخفيض خاص اليوم على حزام دعم وتقويم الظهر ARC161
       </div>
 
       <h1>قعدة طويلة؟ خلّي ظهرك يشكرك مع ARC161</h1>
 
       <p class="subhead">
         حزام ARC161 يعطي دعمًا إضافيًا لأعلى الظهر والكتفين ويذكّر جسمك بالقعدة الصحيحة
-        في المكتب، الجامعة أو السيارة بدون أجهزة معقدة أو أدوية.
+        في المكتب، الجامعة أو السيارة بدون أجهزة معقّدة أو أدوية.
       </p>
 
       <div class="aud-target">
-        حرية تامة: لا دفع مسبق، أنت حر تطلب أو ترفض عند الاستلام بدون أي ضغط.
+        العرض متاح حاليًا على عدد محدود من القطع مع توصيل لكل الولايات والدفع عند الاستلام.
+      </div>
+
+      <!-- شريط استعجال: عد تنازلي + عدد القطع -->
+      <div class="urgency-bar">
+        <span>متبقي <span class="urgency-number" id="stock-count">17</span> قطعة بهذا السعر.</span>
+        <span>ينتهي العرض بعد: <span class="timer" id="countdown">23:59</span></span>
       </div>
 
       <div class="pill-row">
@@ -427,14 +429,14 @@
         <div class="pill">مناسب للرجال والنساء، يلبس تحت القميص</div>
       </div>
 
-      <h2 class="section-title">كيف يمكن أن يساعدك؟</h2>
+      <h2 class="section-title">ماذا يمكن أن يغيّر لك؟</h2>
       <p class="text-small">
         مع الالتزام بلبس الحزام قليلاً كل يوم أثناء الجلوس:
       </p>
       <ul>
-        <li>يقل الانحناء للأمام ويساعدك تبقى في وضعية أكثر استقامة.</li>
-        <li>يخف الشد اليومي على أعلى الظهر والكتفين في نهاية اليوم.</li>
-        <li>يتعوّد جسمك تدريجيًا على قوام أفضل حتى بدون الحزام مع الوقت.</li>
+        <li>يساعد على تقليل الانحناء للأمام والحفاظ على وضعية أكثر استقامة.</li>
+        <li>يخفّ الضغط اليومي على أعلى الظهر والكتفين في نهاية اليوم.</li>
+        <li>يدرب جسمك تدريجيًا على قوام أفضل حتى بدون الحزام مع الوقت.</li>
       </ul>
 
       <h2 class="section-title">طريقة الاستعمال ببساطة</h2>
@@ -447,25 +449,23 @@
       <div class="trust-box">
         <div class="trust-title">حرية الزبون قبل كل شيء</div>
         <div>• لا بطاقات، لا تحويلات، فقط تدفع عند استلام الحزام في يدك بعد أن تشوفه بعينيك.</div>
-        <div>• لا نَعِد بمعجزة، لكن نقدّم دعمًا إضافيًا للظهر يساعدك مع الجلوس الطويل لو التزمت بالاستعمال.</div>
-        <div class="trust-row">
-          <span>أي سؤال قبل الطلب؟ راسلنا على واتساب بكل حرية.</span>
-          <span>تعامل محترم وخدمة جزائرية.</span>
-        </div>
+        <div>• لا نَعِد بمعجزة، لكن نقدم دعمًا إضافيًا للظهر يساعدك مع الجلوس الطويل لو التزمت بالاستعمال.</div>
+        <div>• سعر واضح وشحن واضح، بدون مصاريف مخفية.</div>
       </div>
 
       <div class="price-box">
         <div class="price-row">
-          <div class="price">3,999 دج</div>
-          <div class="old-price">4,599 دج</div>
+          <div class="price">3,990 دج</div>
+          <div class="old-price">4,990 دج</div>
         </div>
-        <div class="saving">تخفيض خاص على الكمية القليلة المتوفرة حاليًا.</div>
-        <div class="urgency">إذا انتهت هذه الكمية يرجع السعر العادي، احجز قطعتك الآن إن أعجبك المنتج.</div>
-        <div class="no-prepay">أنت حر: لا دفع مسبق، ويمكنك رفض الطلب عند الباب إذا لم يعجبك الشكل.</div>
+        <div class="saving">تخفيض 1,000 دج على الكمية الحالية فقط.</div>
+        <div class="no-prepay">
+          الشحن: 300 دج داخل العاصمة، 800 دج لباقي الولايات – الدفع عند الاستلام.
+        </div>
       </div>
 
       <div class="order-form">
-        <div class="order-form-title">اطلب حزامك الآن (أقل من دقيقة)</div>
+        <div class="order-form-title">احجز حزامك قبل انتهاء العد التنازلي</div>
 
         <div class="size-hint">
           لا توجد خدمة استبدال أو استرجاع حاليًا، اختر مقاسك بعناية أو راسلنا على واتساب للمساعدة.
@@ -508,5 +508,31 @@
       </div>
     </main>
   </div>
+
+  <!-- عد تنازلي بسيط لــ 24 ساعة من وقت فتح الصفحة -->
+  <script>
+    (function () {
+      const totalSeconds = 24 * 60 * 60;
+      let remaining = totalSeconds;
+      const el = document.getElementById("countdown");
+
+      function formatTime(sec) {
+        const h = String(Math.floor(sec / 3600)).padStart(2, "0");
+        const m = String(Math.floor((sec % 3600) / 60)).padStart(2, "0");
+        const s = String(sec % 60).padStart(2, "0");
+        return h + ":" + m + ":" + s;
+      }
+
+      function tick() {
+        if (!el) return;
+        el.textContent = formatTime(remaining);
+        if (remaining > 0) {
+          remaining--;
+          setTimeout(tick, 1000);
+        }
+      }
+      tick();
+    })();
+  </script>
 </body>
 </html>
