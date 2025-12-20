@@ -8,7 +8,7 @@
 
   <style>
     :root {
-      /* ألوان شبه طبية مريحة */
+      /* ألوان شبه طبية مريحة للعين */
       --bg-top: #e0f2f1;          /* أخضر فيروزي فاتح */
       --bg-bottom: #f9fafb;       /* رمادي فاتح */
       --card: #ffffff;
@@ -40,7 +40,7 @@
 
     .wrapper {
       width: 100%;
-      max-width: 430px;  /* يشبه عرض هاتف */
+      max-width: 430px;
       padding: 12px;
     }
 
@@ -56,7 +56,7 @@
 
     .center { text-align: center; }
 
-    /* شريط صور قابلة للسحب مثل بوست إنستغرام */
+    /* شريط صور يمكن سحبها من اليمين إلى اليسار */
     .gallery {
       margin-bottom: 10px;
       border-radius: 18px;
@@ -100,25 +100,6 @@
         radial-gradient(circle at top, rgba(14, 165, 233, 0.16), transparent 55%),
         radial-gradient(circle at bottom, rgba(34, 197, 94, 0.16), transparent 60%);
       pointer-events: none;
-    }
-
-    .dots {
-      display: flex;
-      justify-content: center;
-      gap: 5px;
-      padding: 5px 0 6px;
-      background: rgba(15, 23, 42, 0.04);
-    }
-
-    .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.7);
-    }
-
-    .dot.active {
-      background: var(--primary-blue);
     }
 
     .badge {
@@ -170,7 +151,37 @@
       border: 1px solid rgba(148, 163, 184, 0.7);
     }
 
-    /* السعر في الأسفل داخل إطار واضح */
+    .section-title {
+      font-size: 15px;
+      margin: 10px 0 4px;
+      text-align: start;
+    }
+
+    .text-small {
+      font-size: 12px;
+      color: var(--text-soft);
+      margin: 0 0 6px;
+      text-align: start;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 6px;
+      font-size: 12px;
+      color: var(--text-soft);
+      text-align: start;
+    }
+
+    ul li::before {
+      content: "• ";
+      color: var(--primary-blue);
+      font-weight: bold;
+    }
+
+    ul li { margin-bottom: 3px; }
+
+    /* السعر في الأسفل داخل إطار واضح، قريب من النموذج */
     .price-box {
       border-radius: 16px;
       border: 1px solid rgba(34, 197, 94, 0.75);
@@ -203,42 +214,6 @@
       font-size: 11px;
       color: #16a34a;
     }
-
-    .info-line {
-      font-size: 11px;
-      color: #6b7280;
-      margin-bottom: 10px;
-    }
-
-    .section-title {
-      font-size: 15px;
-      margin: 10px 0 4px;
-      text-align: start;
-    }
-
-    .text-small {
-      font-size: 12px;
-      color: var(--text-soft);
-      margin: 0 0 6px;
-      text-align: start;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 6px;
-      font-size: 12px;
-      color: var(--text-soft);
-      text-align: start;
-    }
-
-    ul li::before {
-      content: "• ";
-      color: var(--primary-blue);
-      font-weight: bold;
-    }
-
-    ul li { margin-bottom: 3px; }
 
     .order-form {
       margin-top: 10px;
@@ -312,94 +287,91 @@
   <div class="wrapper">
     <main class="card center">
 
-      <!-- شريط صور يمكن سحبه -->
+      <!-- 4 صور يمكن سحبها من اليمين إلى اليسار -->
       <div class="gallery">
-        <div class="gallery-track" id="galleryTrack">
-          <!-- صورة 1: من الموقع -->
+        <div class="gallery-track">
+          <!-- 1) صورة من الموقع -->
           <div class="gallery-item">
-            <img src="https://www.armororthopedics.com/dosyalar/urunler/img_13.jpg" alt="ARC161 – صورة المنتج" />
+            <img src="https://www.armororthopedics.com/dosyalar/urunler/img_13.jpg"
+                 alt="ARC161 – صورة المنتج" />
             <div class="hero-img-overlay"></div>
           </div>
-          <!-- صورة 2: من الموقع -->
+          <!-- 2) صورة من الموقع -->
           <div class="gallery-item">
-            <img src="https://www.armororthopedics.com/dosyalar/urunler/img_1_13.jpg" alt="طريقة لبس ARC161" />
+            <img src="https://www.armororthopedics.com/dosyalar/urunler/img_1_13.jpg"
+                 alt="طريقة لبس ARC161" />
             <div class="hero-img-overlay"></div>
           </div>
-          <!-- صورة 3: قبل (من GitHub لاحقاً) -->
+          <!-- 3) صورة من GitHub (قبل) -->
           <div class="gallery-item">
-            <img src="https://raw.githubusercontent.com/USERNAME/REPO/main/before_1.jpg" alt="قبل استعمال الحزام" />
+            <img src="https://raw.githubusercontent.com/GateGith/arc161-assets/main/138_SGP4312_2.jpg"
+                 alt="قبل استعمال الحزام" />
             <div class="hero-img-overlay"></div>
           </div>
-          <!-- صورة 4: بعد (من GitHub لاحقاً) -->
+          <!-- 4) صورة من GitHub (بعد) -->
           <div class="gallery-item">
-            <img src="https://raw.githubusercontent.com/USERNAME/REPO/main/after_1.jpg" alt="بعد استعمال الحزام" />
+            <img src="https://raw.githubusercontent.com/GateGith/arc161-assets/main/138_SGP6841.jpg"
+                 alt="بعد استعمال الحزام" />
             <div class="hero-img-overlay"></div>
           </div>
-        </div>
-        <!-- نقاط إرشادية (ثابتة فقط للشكل) -->
-        <div class="dots">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
         </div>
       </div>
 
       <!-- البادج -->
       <div class="badge">
         <span class="dot-badge"></span>
-        منتج شبه طبي يساعد على دعم وتقويم الظهر أثناء الجلوس اليومي
+        منتج شبه طبي يساعد على دعم وتقويم الظهر في الجلوس اليومي
       </div>
 
       <!-- العنوان والنص -->
-      <h1>قعدة أريح، ظهر أخف مع ARC161</h1>
+      <h1>قعدة مريحة، ظهر أخف مع ARC161</h1>
 
       <p class="subhead">
-        حزام ARC161 صُمّم ليخفف الضغط على أسفل الظهر والكتفين ويذكّر جسمك بالقعدة
-        الصحيحة في المكتب، الدراسة أو السياقة – بدون أجهزة معقدة أو أدوية.
+        حزام ARC161 يوزع الضغط على أعلى الظهر والكتفين، ويذكّر جسمك بالقعدة
+        الصحيحة في المكتب، الدراسة أو السياقة، بدون أجهزة معقّدة أو أدوية.
       </p>
 
-      <!-- خانة المعلومات أعلى الصفحة -->
+      <!-- خانة المعلومات في أعلى الصفحة -->
       <div class="info-chips">
-        <div class="info-chip">دعم شبه طبي للظهر والكتفين</div>
+        <div class="info-chip">يدعم العمود الفقري العلوي</div>
         <div class="info-chip">مناسب للرجال والنساء</div>
         <div class="info-chip">يُلبس تحت أو فوق الملابس</div>
-        <div class="info-chip">التوصيل لكل الولايات – دفع عند الاستلام</div>
+        <div class="info-chip">التوصيل لكل ولايات الجزائر – دفع عند الاستلام</div>
       </div>
 
       <!-- فوائد -->
-      <h2 class="section-title">ماذا يستفيد جسمك؟</h2>
+      <h2 class="section-title">ماذا سيُحسّ جسمك؟</h2>
       <p class="text-small">
-        مع الاستعمال المنتظم للحزام أثناء القعدة:
+        مع الاستعمال المنتظم للحزام أثناء الجلوس:
       </p>
       <ul>
         <li>تقل درجة الانحناء للأمام عند استعمال الكمبيوتر أو الهاتف.</li>
-        <li>يخف الشد اليومي على أعلى الظهر والكتفين، خاصة آخر اليوم.</li>
-        <li>يتعوّد جسمك تدريجيًا على قوام مستقيم بدون تفكير مستمر.</li>
+        <li>يخف الشد اليومي على أعلى الظهر والكتفين آخر اليوم.</li>
+        <li>يتعوّد جسمك تدريجيًا على قوام مستقيم بدون تفكير طوال الوقت.</li>
       </ul>
 
       <!-- طريقة الاستعمال -->
       <h2 class="section-title">طريقة الاستعمال ببساطة</h2>
       <ul>
         <li>يلبَس فوق ملابس خفيفة، تُشد الأشرطة حتى يكون ثابت ومريح بدون ضغط زائد.</li>
-        <li>ابدأ بـ 30–45 دقيقة في اليوم ثم زِد المدة تدريجيًا حسب راحتك.</li>
-        <li>يمكن تعديل المقاس من الأشرطة ليتناسب مع أكثر من شخص في البيت.</li>
+        <li>ابدأ بـ 30–45 دقيقة في اليوم، ثم زِد المدة تدريجيًا حسب الراحة.</li>
+        <li>يمكن ضبطه بسهولة ليوافق أكثر من شخص في البيت عبر الأشرطة.</li>
       </ul>
 
-      <!-- السعر في الأسفل داخل إطار -->
+      <!-- السعر في الأسفل داخل إطار واضح، قريب من النموذج -->
       <div class="price-box">
         <div class="price-row">
           <div class="price">3,999 دج</div>
           <div class="old-price">4,599 دج</div>
         </div>
-        <div class="saving">تخفيض محدود على الكمية الحالية – اطلب الآن والدفع عند الاستلام.</div>
+        <div class="saving">تخفيض محدود على المخزون الحالي – اطلب الآن والدفع عند الاستلام.</div>
       </div>
 
-      <!-- نموذج الطلب -->
+      <!-- نموذج الطلب مع المقاسات S–XL -->
       <div class="order-form">
         <div class="order-form-title">املأ بياناتك لتأكيد الطلب (الدفع عند الاستلام)</div>
 
-        <!-- عدّل action ليناسب طريقة استلام الطلبات عندك -->
+        <!-- عدّل action ليناسب طريقة استقبال الطلبات عندك -->
         <form method="post" action="#">
           <label for="name">الاسم الكامل</label>
           <input id="name" name="name" type="text" required />
@@ -423,9 +395,8 @@
         </form>
       </div>
 
-      <!-- دعوة أخيرة -->
       <div class="bottom-cta">
-        لو أنت أو شخص من عائلتك تعانون من تعب في الظهر بسبب القعدة،
+        لو أنت أو شخص من عائلتك تعانون من تعب متكرر في الظهر بسبب القعدة،
         تجربة ARC161 لأسابيع قليلة يمكن أن تصنع فرقًا واضحًا في الراحة اليومية.
       </div>
 
@@ -434,16 +405,5 @@
       </div>
     </main>
   </div>
-
-  <!-- سكربت صغير لتغيير النقاط حسب موضع السحب (اختياري بسيط) -->
-  <script>
-    const track = document.getElementById("galleryTrack");
-    const dots = document.querySelectorAll(".dots .dot");
-
-    track.addEventListener("scroll", () => {
-      const index = Math.round(track.scrollLeft / track.clientWidth);
-      dots.forEach((d, i) => d.classList.toggle("active", i === index));
-    });
-  </script>
 </body>
 </html>
