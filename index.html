@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>ARC161 – استثمر في راحة ظهرك كل يوم</title>
+  <title>ARC161 – قرار هادئ لراحة ظهرك اليومية</title>
 
   <style>
     :root {
-      --bg-top: #e0f7fa;
-      --bg-bottom: #f5f7fb;
+      --bg: #f3f5f8;
       --card: #ffffff;
+      --card-soft: #f9fafb;
+      --primary: #2563eb;
+      --primary-soft: #60a5fa;
       --accent: #22c55e;
-      --accent-dark: #16a34a;
-      --primary-blue: #2563eb;
-      --primary-blue-soft: #60a5fa;
+      --accent-soft: #bbf7d0;
       --text-main: #0f172a;
       --text-soft: #4b5563;
-      --border: rgba(148, 163, 184, 0.6);
-      --danger: #ef4444;
+      --border-soft: rgba(148, 163, 184, 0.45);
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
     }
 
     * { box-sizing: border-box; }
@@ -25,10 +25,7 @@
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(37, 99, 235, 0.14), transparent 55%),
-        radial-gradient(circle at bottom, rgba(34, 197, 94, 0.14), transparent 60%),
-        linear-gradient(165deg, var(--bg-top), var(--bg-bottom));
+      background: radial-gradient(circle at top, rgba(37, 99, 235, 0.08), transparent 55%), var(--bg);
       color: var(--text-main);
       line-height: 1.6;
       min-height: 100vh;
@@ -39,87 +36,88 @@
 
     .wrapper {
       width: 100%;
-      max-width: 430px;
-      padding: 12px;
+      max-width: 440px;
+      padding: 14px;
       display: flex;
       justify-content: center;
     }
 
     .card {
-      background: var(--card);
-      border-radius: 22px;
-      padding: 16px 14px 18px;
-      border: 1px solid var(--border);
-      box-shadow:
-        0 20px 50px rgba(15, 23, 42, 0.18),
-        0 0 0 1px rgba(148, 163, 184, 0.25);
       width: 100%;
-      max-width: 410px;
+      max-width: 420px;
+      background: var(--card);
+      border-radius: 24px;
+      padding: 16px 14px 18px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-soft);
     }
 
     .center { text-align: center; }
 
-    /* صور المنتج في الوسط – بدون أي نص عن السحب */
-    .hero-zone {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 12px;
-    }
-
-    .gallery-frame {
-      width: 100%;
-      max-width: 360px;
+    /* رأس بصري قوي */
+    .hero {
       border-radius: 20px;
-      border: 1px solid rgba(148, 163, 184, 0.75);
       overflow: hidden;
-      background: linear-gradient(145deg, #e0f2fe, #e0f7fa);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      position: relative;
+      background: #e5f0ff;
     }
 
-    .gallery-main img {
+    .hero img {
       width: 100%;
-      height: 260px;
+      height: 250px;
       object-fit: cover;
       display: block;
     }
 
-    .thumb-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3px;
-      margin-top: 4px;
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top, rgba(37, 99, 235, 0.16), transparent 55%),
+        radial-gradient(circle at bottom, rgba(34, 197, 94, 0.16), transparent 60%);
+      pointer-events: none;
     }
 
-    .thumb-row img {
+    .thumbs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .thumbs img {
       width: 100%;
-      height: 70px;
+      height: 72px;
       object-fit: cover;
-      border-radius: 8px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
     }
 
     .badge {
+      margin-top: 10px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       padding: 4px 10px;
       border-radius: 999px;
       background: rgba(219, 234, 254, 0.95);
-      color: var(--primary-blue);
-      border: 1px solid rgba(37, 99, 235, 0.5);
+      color: var(--primary);
+      border: 1px solid rgba(37, 99, 235, 0.4);
       font-size: 11px;
-      margin: 8px 0;
     }
 
-    .badge span.dot-badge {
-      width: 6px;
-      height: 6px;
+    .badge-dot {
+      width: 7px;
+      height: 7px;
       border-radius: 999px;
-      background: #22c55e;
+      background: var(--accent);
     }
 
     h1 {
-      margin: 0 0 4px;
+      margin: 8px 0 4px;
       font-size: 21px;
+      letter-spacing: 0.1px;
     }
 
     .subhead {
@@ -128,10 +126,10 @@
       margin: 0 0 6px;
     }
 
-    .aud-target {
+    .audience-note {
       font-size: 11px;
       color: #0369a1;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .pill-row {
@@ -144,23 +142,23 @@
     }
 
     .pill {
-      padding: 4px 8px;
+      padding: 4px 9px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(248, 250, 252, 0.9);
-      color: #0f172a;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(248, 250, 252, 0.95);
+      color: #111827;
     }
 
     .pill-red {
-      background: rgba(248, 113, 113, 0.08);
-      color: #b91c1c;
       border-color: rgba(248, 113, 113, 0.6);
+      background: rgba(248, 113, 113, 0.06);
+      color: #b91c1c;
     }
 
     .pill-green {
-      background: rgba(34, 197, 94, 0.08);
+      border-color: rgba(34, 197, 94, 0.65);
+      background: rgba(34, 197, 94, 0.06);
       color: #166534;
-      border-color: rgba(34, 197, 94, 0.6);
     }
 
     .section-title {
@@ -177,46 +175,96 @@
     }
 
     ul {
-      list-style: none;
       padding: 0;
       margin: 0 0 6px;
+      list-style: none;
       font-size: 12px;
       color: var(--text-soft);
       text-align: start;
     }
 
-    ul li::before {
-      content: "• ";
-      color: var(--primary-blue-soft);
-      font-weight: bold;
+    ul li {
+      margin-bottom: 3px;
+      position: relative;
+      padding-right: 10px;
     }
 
-    ul li { margin-bottom: 3px; }
+    ul li::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 7px;
+      width: 5px;
+      height: 5px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+    }
 
-    .urgency-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .bar-soft {
       margin-top: 8px;
-      padding: 6px 10px;
+      padding: 7px 10px;
       border-radius: 14px;
-      background: rgba(248, 250, 252, 0.95);
+      background: rgba(248, 250, 252, 0.96);
       border: 1px solid rgba(248, 181, 0, 0.5);
       font-size: 11px;
       color: #92400e;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .urgency-number {
-      font-weight: 700;
+    .bar-soft strong {
       color: #b45309;
+      font-weight: 700;
+    }
+
+    .price-card {
+      margin-top: 10px;
+      padding: 9px 11px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #eff6ff, #ecfdf5);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      text-align: start;
+      font-size: 12px;
+    }
+
+    .price-main {
+      display: flex;
+      justify-content: flex-start;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .price-now {
+      font-size: 22px;
+      font-weight: 800;
+      color: #15803d;
+    }
+
+    .price-old {
+      font-size: 12px;
+      color: #9ca3af;
+      text-decoration: line-through;
+    }
+
+    .price-save {
+      font-size: 11px;
+      color: #166534;
+    }
+
+    .ship-line {
+      margin-top: 3px;
+      font-size: 11px;
+      color: #374151;
     }
 
     .trust-box {
-      margin-top: 6px;
+      margin-top: 8px;
       padding: 8px 10px;
       border-radius: 14px;
-      background: rgba(239, 246, 255, 0.98);
-      border: 1px solid rgba(129, 140, 248, 0.5);
+      background: var(--card-soft);
+      border: 1px solid rgba(129, 140, 248, 0.6);
       text-align: start;
       font-size: 11px;
       color: #374151;
@@ -224,77 +272,37 @@
 
     .trust-title {
       font-weight: 600;
-      margin-bottom: 4px;
-      color: var(--primary-blue);
-    }
-
-    .price-box {
-      border-radius: 16px;
-      border: 1px solid rgba(34, 197, 94, 0.75);
-      background: linear-gradient(135deg, rgba(22, 163, 74, 0.06), rgba(191, 219, 254, 0.4));
-      padding: 8px 10px;
-      margin: 10px 0 10px;
-    }
-
-    .price-row {
-      display: flex;
-      justify-content: center;
-      align-items: baseline;
-      gap: 8px;
+      color: var(--primary);
       margin-bottom: 4px;
     }
 
-    .price {
-      font-size: 22px;
-      font-weight: 900;
-      color: var(--accent-dark);
-    }
-
-    .old-price {
-      font-size: 12px;
-      color: #9ca3af;
-      text-decoration: line-through;
-    }
-
-    .saving {
-      font-size: 11px;
-      color: #16a34a;
-      margin-bottom: 3px;
-    }
-
-    .no-prepay {
-      font-size: 11px;
-      color: #4b5563;
-    }
-
-    .order-form {
+    .form-card {
       margin-top: 10px;
       padding: 10px;
-      border-radius: 16px;
-      background: #f9fafb;
+      border-radius: 18px;
+      background: var(--card-soft);
       border: 1px solid rgba(148, 163, 184, 0.7);
       text-align: start;
     }
 
-    .order-form-title {
+    .form-title {
       font-size: 13px;
       font-weight: 600;
+      color: #1d4ed8;
       margin-bottom: 6px;
-      color: #2563eb;
     }
 
-    .order-form label {
+    label {
       display: block;
       font-size: 11px;
       color: #4b5563;
       margin-bottom: 3px;
     }
 
-    .order-form input,
-    .order-form select {
+    input, select {
       width: 100%;
       border-radius: 10px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.9);
       padding: 7px 9px;
       font-family: inherit;
       font-size: 12px;
@@ -302,23 +310,28 @@
       background: #ffffff;
     }
 
-    .order-form button {
+    button {
       width: 100%;
       margin-top: 4px;
       border-radius: 999px;
       padding: 9px 12px;
       border: none;
-      background: linear-gradient(135deg, var(--primary-blue), var(--accent));
-      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #ffffff;
       font-size: 13px;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 16px 32px rgba(37, 99, 235, 0.35);
     }
 
-    .order-form button:active { transform: translateY(1px); }
+    button:active { transform: translateY(1px); }
 
-    /* صندوق التوصيل + المجموع النهائي */
+    .size-hint {
+      font-size: 10px;
+      color: #92400e;
+      margin-bottom: 4px;
+    }
+
     .summary-box {
       margin-top: 10px;
       padding: 8px 10px;
@@ -342,223 +355,9 @@
       color: #15803d;
     }
 
-    .bottom-cta {
+    .bottom-note {
       margin-top: 10px;
-      padding: 10px 10px 12px;
+      padding: 9px 10px 11px;
       border-radius: 16px;
-      background: linear-gradient(145deg, rgba(37, 99, 235, 0.10), rgba(191, 219, 254, 0.7));
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      font-size: 12px;
-      text-align: start;
-    }
-
-    .footer-note {
-      margin-top: 8px;
-      font-size: 10px;
-      color: #9ca3af;
-      text-align: start;
-    }
-
-    .no-return-note {
-      margin-top: 6px;
-      font-size: 10px;
-      color: #b91c1c;
-      text-align: start;
-    }
-
-    .size-hint {
-      font-size: 10px;
-      color: #92400e;
-      margin-bottom: 4px;
-    }
-  </style>
-</head>
-<body>
-  <div class="wrapper">
-    <main class="card center">
-
-      <!-- صور المنتج في الوسط -->
-      <div class="hero-zone">
-        <div class="gallery-frame">
-          <div class="gallery-main">
-            <img src="https://www.armororthopedics.com/dosyalar/urunler/img_13.jpg"
-                 alt="حزام ARC161 لدعم الظهر" />
-          </div>
-        </div>
-      </div>
-      <div class="thumb-row">
-        <img src="https://www.armororthopedics.com/dosyalar/urunler/img_1_13.jpg" alt="طريقة اللبس" />
-        <img src="https://raw.githubusercontent.com/GateGith/arc161-assets/main/138_SGP4312_2.jpg" alt="قبل الاستعمال" />
-        <img src="https://raw.githubusercontent.com/GateGith/arc161-assets/main/138_SGP6841.jpg" alt="بعد الاستعمال" />
-      </div>
-
-      <div class="badge">
-        <span class="dot-badge"></span>
-        استثمر في راحة ظهرك – منتج شبه طبي للدعم اليومي
-      </div>
-
-      <h1>من نهاية يوم متعب… إلى ظهر أخف وأريح</h1>
-
-      <p class="subhead">
-        حزام ARC161 يساعدك تجلس بطريقة صحيحة وتخفف الضغط على أعلى الظهر والكتفين،
-        حتى تحافظ على تركيزك وطاقتك طول اليوم بدل ما تنشغل بالألم.
-      </p>
-
-      <div class="aud-target">
-        مناسب لكل من يقضي ساعات طويلة أمام الكمبيوتر، في السيارة، أو في الدراسة.
-      </div>
-
-      <div class="urgency-bar">
-        <span>متبقي <span class="urgency-number">17</span> قطعة بهذا السعر.</span>
-        <span>عرض اليوم فقط – بعده يرجع السعر العادي.</span>
-      </div>
-
-      <div class="pill-row">
-        <div class="pill pill-red">وجع آخر النهار في أعلى الظهر؟</div>
-        <div class="pill pill-red">تلقّى روحك منحني قدّام الهاتف أو اللاب توب؟</div>
-        <div class="pill pill-green">دعم شبه طبي يساعد على تقويم الظهر</div>
-        <div class="pill">مناسب للرجال والنساء، يلبس تحت أو فوق القميص</div>
-      </div>
-
-      <h2 class="section-title">لماذا هذا الحزام استثمار في نفسك؟</h2>
-      <p class="text-small">
-        ما تشتريش فقط قماش، تشتري راحة وتركيز لنهاية اليوم:
-      </p>
-      <ul>
-        <li>تخفيف الشد في أعلى الظهر يعني نهاية يوم أهدأ ونوم أريح.</li>
-        <li>وضعية أفضل تعطيك حضور وثقة أكثر في العمل أو الدراسة.</li>
-        <li>كل ساعة بدون ألم تزيد إنتاجيتك وتخليك تستمتع بوقتك بعد الشغل.</li>
-      </ul>
-
-      <h2 class="section-title">طريقة الاستعمال ببساطة</h2>
-      <ul>
-        <li>يلبس فوق ملابس خفيفة، تُشد الأشرطة حتى يكون ثابتًا ومريحًا بدون ضغط مزعج.</li>
-        <li>ابدأ بـ 30–45 دقيقة في اليوم، ثم زِد المدة تدريجيًا حسب شعورك بالراحة.</li>
-        <li>يمكن تعديله بسهولة ليتماشى مع أكثر من شخص في البيت عن طريق الأشرطة.</li>
-      </ul>
-
-      <div class="trust-box">
-        <div class="trust-title">وضوح كامل واحترام لحرية الزبون</div>
-        <div>• لا بطاقات، لا تحويلات. تدفع فقط عند استلام الحزام في يدك بعد أن تشوفه.</div>
-        <div>• سعر واضح وشحن واضح، بدون مصاريف مخفية أو وعود سحرية.</div>
-        <div>• هدفنا أن تشعر أن ظهرك ارتاح، لا أن نبيعك قطعة وتُنسا في الدولاب.</div>
-      </div>
-
-      <div class="price-box">
-        <div class="price-row">
-          <div class="price" id="productPrice">3,990 دج</div>
-          <div class="old-price">4,990 دج</div>
-        </div>
-        <div class="saving">توفّر 1,000 دج على العرض الحالي.</div>
-        <div class="no-prepay">
-          الشحن: 300 دج داخل العاصمة، 800 دج لباقي الولايات – الدفع عند الاستلام.
-        </div>
-      </div>
-
-      <div class="order-form">
-        <div class="order-form-title">خُذ قرارًا بسيطًا لصحة ظهرك</div>
-
-        <div class="size-hint">
-          لا توجد خدمة استبدال أو استرجاع حاليًا، اختر مقاسك بعناية أو راسلنا على واتساب للمساعدة قبل الطلب.
-        </div>
-
-        <form id="orderForm" method="post" action="#">
-          <label for="name">الاسم الكامل</label>
-          <input id="name" name="name" type="text" required />
-
-          <label for="phone">رقم الهاتف</label>
-          <input id="phone" name="phone" type="tel" required />
-
-          <label for="wilaya">الولاية</label>
-          <select id="wilaya" name="wilaya" required>
-            <option value="">اختر ولايتك</option>
-            <option value="algiers">الجزائر العاصمة</option>
-            <option value="other">ولاية أخرى</option>
-          </select>
-
-          <label for="size">المقاس</label>
-          <select id="size" name="size" required>
-            <option value="">اختر المقاس المناسب</option>
-            <option value="S">S – جسم نحيف</option>
-            <option value="M">M – جسم متوسط</option>
-            <option value="L">L – ممتلئ</option>
-            <option value="XL">XL – ممتلئ جدًا</option>
-          </select>
-
-          <button type="submit">أرسل طلبي الآن</button>
-        </form>
-      </div>
-
-      <!-- ملخص التوصيل + المجموع النهائي بعد ملء البيانات -->
-      <div class="summary-box" id="summaryBox">
-        <div class="summary-row">
-          <span>سعر الحزام:</span>
-          <span>3,990 دج</span>
-        </div>
-        <div class="summary-row">
-          <span>سعر التوصيل (يُحتسب حسب ولايتك):</span>
-          <span id="shipPrice">—</span>
-        </div>
-        <div class="summary-row summary-total">
-          <span>المجموع الذي ستدفعه عند الاستلام:</span>
-          <span id="totalPrice">—</span>
-        </div>
-        <div style="margin-top:4px;">
-          هذا هو المبلغ النهائي، لا توجد أي رسوم أخرى مخفية.
-        </div>
-      </div>
-
-      <div class="bottom-cta">
-        فكّر في عدد الساعات التي تقضيها جالسًا كل أسبوع. إذا حسّنت هذه الساعات، يتحسّن
-        كل شيء بعدها: مزاجك، تركيزك، وحتى علاقاتك. ARC161 خطوة بسيطة في هذا الاتجاه.
-      </div>
-
-      <div class="no-return-note">
-        ملاحظة: لا توجد خدمة استبدال أو استرجاع حاليًا. إذا كنت مترددًا في المقاس، تواصل معنا قبل أن تؤكد الطلب.
-      </div>
-
-      <div class="footer-note">
-        منتج شبه طبي يساعد على دعم وتقويم الظهر، ولا يُعتبر بديلاً عن الاستشارة أو العلاج الطبي المتخصّص.
-      </div>
-    </main>
-  </div>
-
-  <!-- سكربت بسيط لحساب التوصيل والمجموع النهائي حسب الولاية -->
-  <script>
-    (function () {
-      const PRODUCT_PRICE = 3990;
-      const SHIP_ALGIERS = 300;
-      const SHIP_OTHER = 800;
-
-      const wilayaSelect = document.getElementById("wilaya");
-      const shipPriceEl = document.getElementById("shipPrice");
-      const totalPriceEl = document.getElementById("totalPrice");
-
-      function updateSummary() {
-        if (!wilayaSelect) return;
-        let ship = null;
-
-        if (wilayaSelect.value === "algiers") {
-          ship = SHIP_ALGIERS;
-        } else if (wilayaSelect.value === "other") {
-          ship = SHIP_OTHER;
-        }
-
-        if (ship === null) {
-          shipPriceEl.textContent = "اختر ولايتك";
-          totalPriceEl.textContent = "—";
-          return;
-        }
-
-        shipPriceEl.textContent = ship + " دج";
-        totalPriceEl.textContent = (PRODUCT_PRICE + ship).toLocaleString("ar-DZ") + " دج";
-      }
-
-      if (wilayaSelect) {
-        wilayaSelect.addEventListener("change", updateSummary);
-      }
-    })();
-  </script>
-</body>
-</html>
+      background: linear-gradient(145
 
