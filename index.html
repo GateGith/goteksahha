@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>ARC161 – حزام ظهر شبه طبي لتخفيف آلام الظهر</title>
+  <title>ARC161 – استثمر في راحة ظهرك كل يوم</title>
 
   <style>
     :root {
@@ -60,6 +59,7 @@
 
     .center { text-align: center; }
 
+    /* صور المنتج في الوسط – بدون أي نص عن السحب */
     .hero-zone {
       display: flex;
       justify-content: center;
@@ -75,39 +75,26 @@
       background: linear-gradient(145deg, #e0f2fe, #e0f7fa);
     }
 
-    .gallery-track {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .gallery-item {
-      min-width: 100%;
-      scroll-snap-align: center;
-      position: relative;
-    }
-
-    .gallery-item img {
+    .gallery-main img {
       width: 100%;
       height: 260px;
       object-fit: cover;
       display: block;
     }
 
-    .hero-img-overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top, rgba(37, 99, 235, 0.18), transparent 55%),
-        radial-gradient(circle at bottom, rgba(34, 197, 94, 0.16), transparent 60%);
-      pointer-events: none;
+    .thumb-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      margin-top: 4px;
     }
 
-    .swipe-hint {
-      font-size: 10px;
-      color: #6b7280;
-      margin-top: 4px;
+    .thumb-row img {
+      width: 100%;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
     }
 
     .badge {
@@ -132,7 +119,7 @@
 
     h1 {
       margin: 0 0 4px;
-      font-size: 22px;
+      font-size: 21px;
     }
 
     .subhead {
@@ -222,11 +209,6 @@
     .urgency-number {
       font-weight: 700;
       color: #b45309;
-    }
-
-    .timer {
-      font-weight: 700;
-      color: #dc2626;
     }
 
     .trust-box {
@@ -336,6 +318,30 @@
 
     .order-form button:active { transform: translateY(1px); }
 
+    /* صندوق التوصيل + المجموع النهائي */
+    .summary-box {
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 14px;
+      background: #ecfdf5;
+      border: 1px solid rgba(34, 197, 94, 0.6);
+      font-size: 11px;
+      text-align: start;
+      color: #065f46;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 3px;
+    }
+
+    .summary-total {
+      font-weight: 700;
+      font-size: 13px;
+      color: #15803d;
+    }
+
     .bottom-cta {
       margin-top: 10px;
       padding: 10px 10px 12px;
@@ -371,107 +377,92 @@
   <div class="wrapper">
     <main class="card center">
 
-      <!-- صور المنتج في وسط الشاشة -->
+      <!-- صور المنتج في الوسط -->
       <div class="hero-zone">
         <div class="gallery-frame">
-          <div class="gallery-track">
-            <div class="gallery-item">
-              <img src="https://www.armororthopedics.com/dosyalar/urunler/img_13.jpg"
-                   alt="ARC161 – صورة المنتج" />
-              <div class="hero-img-overlay"></div>
-            </div>
-            <div class="gallery-item">
-              <img src="https://www.armororthopedics.com/dosyalar/urunler/img_1_13.jpg"
-                   alt="طريقة لبس ARC161" />
-              <div class="hero-img-overlay"></div>
-            </div>
-            <div class="gallery-item">
-              <img src="https://raw.githubusercontent.com/GateGith/arc161-assets/main/138_SGP4312_2.jpg"
-                   alt="قبل استعمال الحزام" />
-              <div class="hero-img-overlay"></div>
-            </div>
-            <div class="gallery-item">
-              <img src="https://raw.githubusercontent.com/GateGith/arc161-assets/main/138_SGP6841.jpg"
-                   alt="بعد استعمال الحزام" />
-              <div class="hero-img-overlay"></div>
-            </div>
+          <div class="gallery-main">
+            <img src="https://www.armororthopedics.com/dosyalar/urunler/img_13.jpg"
+                 alt="حزام ARC161 لدعم الظهر" />
           </div>
         </div>
       </div>
-      <div class="swipe-hint">اسحب الصور من اليمين لليسار وتشوف قبل/بعد واستعمال الحزام.</div>
+      <div class="thumb-row">
+        <img src="https://www.armororthopedics.com/dosyalar/urunler/img_1_13.jpg" alt="طريقة اللبس" />
+        <img src="https://raw.githubusercontent.com/GateGith/arc161-assets/main/138_SGP4312_2.jpg" alt="قبل الاستعمال" />
+        <img src="https://raw.githubusercontent.com/GateGith/arc161-assets/main/138_SGP6841.jpg" alt="بعد الاستعمال" />
+      </div>
 
       <div class="badge">
         <span class="dot-badge"></span>
-        تخفيض خاص اليوم على حزام دعم وتقويم الظهر ARC161
+        استثمر في راحة ظهرك – منتج شبه طبي للدعم اليومي
       </div>
 
-      <h1>قعدة طويلة؟ خلّي ظهرك يشكرك مع ARC161</h1>
+      <h1>من نهاية يوم متعب… إلى ظهر أخف وأريح</h1>
 
       <p class="subhead">
-        حزام ARC161 يعطي دعمًا إضافيًا لأعلى الظهر والكتفين ويذكّر جسمك بالقعدة الصحيحة
-        في المكتب، الجامعة أو السيارة بدون أجهزة معقّدة أو أدوية.
+        حزام ARC161 يساعدك تجلس بطريقة صحيحة وتخفف الضغط على أعلى الظهر والكتفين،
+        حتى تحافظ على تركيزك وطاقتك طول اليوم بدل ما تنشغل بالألم.
       </p>
 
       <div class="aud-target">
-        العرض متاح حاليًا على عدد محدود من القطع مع توصيل لكل الولايات والدفع عند الاستلام.
+        مناسب لكل من يقضي ساعات طويلة أمام الكمبيوتر، في السيارة، أو في الدراسة.
       </div>
 
-      <!-- شريط استعجال: عد تنازلي + عدد القطع -->
       <div class="urgency-bar">
-        <span>متبقي <span class="urgency-number" id="stock-count">17</span> قطعة بهذا السعر.</span>
-        <span>ينتهي العرض بعد: <span class="timer" id="countdown">23:59</span></span>
+        <span>متبقي <span class="urgency-number">17</span> قطعة بهذا السعر.</span>
+        <span>عرض اليوم فقط – بعده يرجع السعر العادي.</span>
       </div>
 
       <div class="pill-row">
-        <div class="pill pill-red">وجع أو ثقل في الظهر آخر النهار؟</div>
-        <div class="pill pill-red">تلقّى روحك دايمًا منحني قدّام الهاتف؟</div>
-        <div class="pill pill-green">دعم شبه طبي للظهر والكتفين</div>
-        <div class="pill">مناسب للرجال والنساء، يلبس تحت القميص</div>
+        <div class="pill pill-red">وجع آخر النهار في أعلى الظهر؟</div>
+        <div class="pill pill-red">تلقّى روحك منحني قدّام الهاتف أو اللاب توب؟</div>
+        <div class="pill pill-green">دعم شبه طبي يساعد على تقويم الظهر</div>
+        <div class="pill">مناسب للرجال والنساء، يلبس تحت أو فوق القميص</div>
       </div>
 
-      <h2 class="section-title">ماذا يمكن أن يغيّر لك؟</h2>
+      <h2 class="section-title">لماذا هذا الحزام استثمار في نفسك؟</h2>
       <p class="text-small">
-        مع الالتزام بلبس الحزام قليلاً كل يوم أثناء الجلوس:
+        ما تشتريش فقط قماش، تشتري راحة وتركيز لنهاية اليوم:
       </p>
       <ul>
-        <li>يساعد على تقليل الانحناء للأمام والحفاظ على وضعية أكثر استقامة.</li>
-        <li>يخفّ الضغط اليومي على أعلى الظهر والكتفين في نهاية اليوم.</li>
-        <li>يدرب جسمك تدريجيًا على قوام أفضل حتى بدون الحزام مع الوقت.</li>
+        <li>تخفيف الشد في أعلى الظهر يعني نهاية يوم أهدأ ونوم أريح.</li>
+        <li>وضعية أفضل تعطيك حضور وثقة أكثر في العمل أو الدراسة.</li>
+        <li>كل ساعة بدون ألم تزيد إنتاجيتك وتخليك تستمتع بوقتك بعد الشغل.</li>
       </ul>
 
       <h2 class="section-title">طريقة الاستعمال ببساطة</h2>
       <ul>
-        <li>يلبَس فوق ملابس خفيفة، تُشد الأشرطة حتى يكون ثابتًا ومريحًا بدون ضغط مزعج.</li>
+        <li>يلبس فوق ملابس خفيفة، تُشد الأشرطة حتى يكون ثابتًا ومريحًا بدون ضغط مزعج.</li>
         <li>ابدأ بـ 30–45 دقيقة في اليوم، ثم زِد المدة تدريجيًا حسب شعورك بالراحة.</li>
         <li>يمكن تعديله بسهولة ليتماشى مع أكثر من شخص في البيت عن طريق الأشرطة.</li>
       </ul>
 
       <div class="trust-box">
-        <div class="trust-title">حرية الزبون قبل كل شيء</div>
-        <div>• لا بطاقات، لا تحويلات، فقط تدفع عند استلام الحزام في يدك بعد أن تشوفه بعينيك.</div>
-        <div>• لا نَعِد بمعجزة، لكن نقدم دعمًا إضافيًا للظهر يساعدك مع الجلوس الطويل لو التزمت بالاستعمال.</div>
-        <div>• سعر واضح وشحن واضح، بدون مصاريف مخفية.</div>
+        <div class="trust-title">وضوح كامل واحترام لحرية الزبون</div>
+        <div>• لا بطاقات، لا تحويلات. تدفع فقط عند استلام الحزام في يدك بعد أن تشوفه.</div>
+        <div>• سعر واضح وشحن واضح، بدون مصاريف مخفية أو وعود سحرية.</div>
+        <div>• هدفنا أن تشعر أن ظهرك ارتاح، لا أن نبيعك قطعة وتُنسا في الدولاب.</div>
       </div>
 
       <div class="price-box">
         <div class="price-row">
-          <div class="price">3,990 دج</div>
+          <div class="price" id="productPrice">3,990 دج</div>
           <div class="old-price">4,990 دج</div>
         </div>
-        <div class="saving">تخفيض 1,000 دج على الكمية الحالية فقط.</div>
+        <div class="saving">توفّر 1,000 دج على العرض الحالي.</div>
         <div class="no-prepay">
           الشحن: 300 دج داخل العاصمة، 800 دج لباقي الولايات – الدفع عند الاستلام.
         </div>
       </div>
 
       <div class="order-form">
-        <div class="order-form-title">احجز حزامك قبل انتهاء العد التنازلي</div>
+        <div class="order-form-title">خُذ قرارًا بسيطًا لصحة ظهرك</div>
 
         <div class="size-hint">
-          لا توجد خدمة استبدال أو استرجاع حاليًا، اختر مقاسك بعناية أو راسلنا على واتساب للمساعدة.
+          لا توجد خدمة استبدال أو استرجاع حاليًا، اختر مقاسك بعناية أو راسلنا على واتساب للمساعدة قبل الطلب.
         </div>
 
-        <form method="post" action="#">
+        <form id="orderForm" method="post" action="#">
           <label for="name">الاسم الكامل</label>
           <input id="name" name="name" type="text" required />
 
@@ -479,7 +470,11 @@
           <input id="phone" name="phone" type="tel" required />
 
           <label for="wilaya">الولاية</label>
-          <input id="wilaya" name="wilaya" type="text" required />
+          <select id="wilaya" name="wilaya" required>
+            <option value="">اختر ولايتك</option>
+            <option value="algiers">الجزائر العاصمة</option>
+            <option value="other">ولاية أخرى</option>
+          </select>
 
           <label for="size">المقاس</label>
           <select id="size" name="size" required>
@@ -490,17 +485,36 @@
             <option value="XL">XL – ممتلئ جدًا</option>
           </select>
 
-          <button type="submit">إرسال الطلب الآن</button>
+          <button type="submit">أرسل طلبي الآن</button>
         </form>
       </div>
 
+      <!-- ملخص التوصيل + المجموع النهائي بعد ملء البيانات -->
+      <div class="summary-box" id="summaryBox">
+        <div class="summary-row">
+          <span>سعر الحزام:</span>
+          <span>3,990 دج</span>
+        </div>
+        <div class="summary-row">
+          <span>سعر التوصيل (يُحتسب حسب ولايتك):</span>
+          <span id="shipPrice">—</span>
+        </div>
+        <div class="summary-row summary-total">
+          <span>المجموع الذي ستدفعه عند الاستلام:</span>
+          <span id="totalPrice">—</span>
+        </div>
+        <div style="margin-top:4px;">
+          هذا هو المبلغ النهائي، لا توجد أي رسوم أخرى مخفية.
+        </div>
+      </div>
+
       <div class="bottom-cta">
-        إذا كنت تقول كل يوم "غدوة نعتني بظهري"، خليه اليوم. خطوة بسيطة مثل تجربة ARC161
-        ممكن تغيّر شعورك في نهاية النهار، خصوصًا لو شغلك أو دراستك كلها جلوس.
+        فكّر في عدد الساعات التي تقضيها جالسًا كل أسبوع. إذا حسّنت هذه الساعات، يتحسّن
+        كل شيء بعدها: مزاجك، تركيزك، وحتى علاقاتك. ARC161 خطوة بسيطة في هذا الاتجاه.
       </div>
 
       <div class="no-return-note">
-        ملاحظة: لا توجد خدمة استبدال أو استرجاع حاليًا. إذا لم تكن متأكدًا من المقاس، تواصل معنا قبل تأكيد الطلب.
+        ملاحظة: لا توجد خدمة استبدال أو استرجاع حاليًا. إذا كنت مترددًا في المقاس، تواصل معنا قبل أن تؤكد الطلب.
       </div>
 
       <div class="footer-note">
@@ -509,30 +523,42 @@
     </main>
   </div>
 
-  <!-- عد تنازلي بسيط لــ 24 ساعة من وقت فتح الصفحة -->
+  <!-- سكربت بسيط لحساب التوصيل والمجموع النهائي حسب الولاية -->
   <script>
     (function () {
-      const totalSeconds = 24 * 60 * 60;
-      let remaining = totalSeconds;
-      const el = document.getElementById("countdown");
+      const PRODUCT_PRICE = 3990;
+      const SHIP_ALGIERS = 300;
+      const SHIP_OTHER = 800;
 
-      function formatTime(sec) {
-        const h = String(Math.floor(sec / 3600)).padStart(2, "0");
-        const m = String(Math.floor((sec % 3600) / 60)).padStart(2, "0");
-        const s = String(sec % 60).padStart(2, "0");
-        return h + ":" + m + ":" + s;
-      }
+      const wilayaSelect = document.getElementById("wilaya");
+      const shipPriceEl = document.getElementById("shipPrice");
+      const totalPriceEl = document.getElementById("totalPrice");
 
-      function tick() {
-        if (!el) return;
-        el.textContent = formatTime(remaining);
-        if (remaining > 0) {
-          remaining--;
-          setTimeout(tick, 1000);
+      function updateSummary() {
+        if (!wilayaSelect) return;
+        let ship = null;
+
+        if (wilayaSelect.value === "algiers") {
+          ship = SHIP_ALGIERS;
+        } else if (wilayaSelect.value === "other") {
+          ship = SHIP_OTHER;
         }
+
+        if (ship === null) {
+          shipPriceEl.textContent = "اختر ولايتك";
+          totalPriceEl.textContent = "—";
+          return;
+        }
+
+        shipPriceEl.textContent = ship + " دج";
+        totalPriceEl.textContent = (PRODUCT_PRICE + ship).toLocaleString("ar-DZ") + " دج";
       }
-      tick();
+
+      if (wilayaSelect) {
+        wilayaSelect.addEventListener("change", updateSummary);
+      }
     })();
   </script>
 </body>
 </html>
+
