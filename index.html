@@ -1,3 +1,6 @@
+/body>
+</html>
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -7,18 +10,18 @@
 
   <style>
     :root {
-      --bg-top: #e0f2f1;
-      --bg-bottom: #f9fafb;
+      /* لوحة ألوان صحية: أزرق ثقة + أخضر صحة + خلفية فاتحة */
+      --bg-top: #e0f7fa;          /* سماوي فاتح مريح */
+      --bg-bottom: #f5f7fb;       /* رمادي مزرق ناعم */
       --card: #ffffff;
-      --accent: #22c55e;
+      --accent: #22c55e;          /* أخضر صحة */
       --accent-dark: #16a34a;
-      --primary-blue: #0ea5e9;
-      --primary-blue-dark: #0369a1;
+      --primary-blue: #2563eb;    /* أزرق ثقة وهدوء */
+      --primary-blue-soft: #60a5fa;
       --text-main: #0f172a;
       --text-soft: #4b5563;
       --border: rgba(148, 163, 184, 0.6);
       --danger: #ef4444;
-      --warning: #f59e0b;
     }
 
     * { box-sizing: border-box; }
@@ -27,7 +30,7 @@
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top, rgba(14, 165, 233, 0.14), transparent 55%),
+        radial-gradient(circle at top, rgba(37, 99, 235, 0.14), transparent 55%),
         radial-gradient(circle at bottom, rgba(34, 197, 94, 0.14), transparent 60%),
         linear-gradient(165deg, var(--bg-top), var(--bg-bottom));
       color: var(--text-main);
@@ -40,8 +43,10 @@
 
     .wrapper {
       width: 100%;
-      max-width: 430px;
+      max-width: 430px;      /* يشبه عرض الهاتف */
       padding: 12px;
+      display: flex;
+      justify-content: center;
     }
 
     .card {
@@ -51,18 +56,27 @@
       border: 1px solid var(--border);
       box-shadow:
         0 20px 50px rgba(15, 23, 42, 0.18),
-        0 0 0 1px rgba(148, 163, 184, 0.35);
+        0 0 0 1px rgba(148, 163, 184, 0.25);
+      width: 100%;
+      max-width: 410px;      /* حتى تظهر كأنها “بطاقة” في وسط الشاشة */
     }
 
     .center { text-align: center; }
 
-    /* جاليري صور تُسحب يمين/يسار */
-    .gallery {
-      margin-bottom: 10px;
-      border-radius: 18px;
+    /* جاليري صور تُسحب يمين/يسار في وسط الشاشة */
+    .hero-zone {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .gallery-frame {
+      width: 100%;
+      max-width: 360px;      /* يجعل الصور في وسط الهاتف تمامًا */
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.75);
       overflow: hidden;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: #e5f4ff;
+      background: linear-gradient(145deg, #e0f2fe, #e0f7fa);
     }
 
     .gallery-track {
@@ -97,7 +111,7 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at top, rgba(14, 165, 233, 0.16), transparent 55%),
+        radial-gradient(circle at top, rgba(37, 99, 235, 0.18), transparent 55%),
         radial-gradient(circle at bottom, rgba(34, 197, 94, 0.16), transparent 60%);
       pointer-events: none;
     }
@@ -114,9 +128,9 @@
       gap: 6px;
       padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(209, 250, 229, 0.95);
-      color: var(--primary-blue-dark);
-      border: 1px solid rgba(34, 197, 94, 0.4);
+      background: rgba(219, 234, 254, 0.95);
+      color: var(--primary-blue);
+      border: 1px solid rgba(37, 99, 235, 0.5);
       font-size: 11px;
       margin: 8px 0;
     }
@@ -141,11 +155,10 @@
 
     .aud-target {
       font-size: 11px;
-      color: #0f766e;
+      color: #0369a1;
       margin-bottom: 8px;
     }
 
-    /* شريط مشاكل / حل / خدمة */
     .pill-row {
       display: flex;
       flex-wrap: wrap;
@@ -159,6 +172,8 @@
       padding: 4px 8px;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(248, 250, 252, 0.9);
+      color: #0f172a;
     }
 
     .pill-red {
@@ -171,12 +186,6 @@
       background: rgba(34, 197, 94, 0.08);
       color: #166534;
       border-color: rgba(34, 197, 94, 0.6);
-    }
-
-    .pill-blue {
-      background: rgba(59, 130, 246, 0.08);
-      color: #1d4ed8;
-      border-color: rgba(59, 130, 246, 0.6);
     }
 
     .section-title {
@@ -203,7 +212,7 @@
 
     ul li::before {
       content: "• ";
-      color: var(--primary-blue);
+      color: var(--primary-blue-soft);
       font-weight: bold;
     }
 
@@ -213,7 +222,7 @@
       margin-top: 6px;
       padding: 8px 10px;
       border-radius: 14px;
-      background: rgba(239, 246, 255, 0.9);
+      background: rgba(239, 246, 255, 0.98);
       border: 1px solid rgba(129, 140, 248, 0.5);
       text-align: start;
       font-size: 11px;
@@ -223,7 +232,7 @@
     .trust-title {
       font-weight: 600;
       margin-bottom: 4px;
-      color: #1d4ed8;
+      color: var(--primary-blue);
     }
 
     .trust-row {
@@ -234,7 +243,6 @@
       margin-top: 4px;
     }
 
-    /* مربع السعر */
     .price-box {
       border-radius: 16px;
       border: 1px solid rgba(34, 197, 94, 0.75);
@@ -322,11 +330,12 @@
       border-radius: 999px;
       padding: 9px 12px;
       border: none;
-      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent));
       color: #fff;
       font-size: 13px;
       font-weight: 700;
       cursor: pointer;
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.35);
     }
 
     .order-form button:active { transform: translateY(1px); }
@@ -335,8 +344,8 @@
       margin-top: 10px;
       padding: 10px 10px 12px;
       border-radius: 16px;
-      background: linear-gradient(145deg, rgba(34, 197, 94, 0.14), rgba(191, 219, 254, 0.45));
-      border: 1px solid rgba(34, 197, 94, 0.5);
+      background: linear-gradient(145deg, rgba(37, 99, 235, 0.10), rgba(191, 219, 254, 0.7));
+      border: 1px solid rgba(148, 163, 184, 0.7);
       font-size: 12px;
       text-align: start;
     }
@@ -366,32 +375,34 @@
   <div class="wrapper">
     <main class="card center">
 
-      <!-- جاليري الصور -->
-      <div class="gallery">
-        <div class="gallery-track">
-          <div class="gallery-item">
-            <img src="https://www.armororthopedics.com/dosyalar/urunler/img_13.jpg"
-                 alt="ARC161 – صورة المنتج" />
-            <div class="hero-img-overlay"></div>
-          </div>
-          <div class="gallery-item">
-            <img src="https://www.armororthopedics.com/dosyalar/urunler/img_1_13.jpg"
-                 alt="طريقة لبس ARC161" />
-            <div class="hero-img-overlay"></div>
-          </div>
-          <div class="gallery-item">
-            <img src="https://raw.githubusercontent.com/GateGith/arc161-assets/main/138_SGP4312_2.jpg"
-                 alt="قبل استعمال الحزام" />
-            <div class="hero-img-overlay"></div>
-          </div>
-          <div class="gallery-item">
-            <img src="https://raw.githubusercontent.com/GateGith/arc161-assets/main/138_SGP6841.jpg"
-                 alt="بعد استعمال الحزام" />
-            <div class="hero-img-overlay"></div>
+      <!-- صور المنتج في وسط الشاشة -->
+      <div class="hero-zone">
+        <div class="gallery-frame">
+          <div class="gallery-track">
+            <div class="gallery-item">
+              <img src="https://www.armororthopedics.com/dosyalar/urunler/img_13.jpg"
+                   alt="ARC161 – صورة المنتج" />
+              <div class="hero-img-overlay"></div>
+            </div>
+            <div class="gallery-item">
+              <img src="https://www.armororthopedics.com/dosyalar/urunler/img_1_13.jpg"
+                   alt="طريقة لبس ARC161" />
+              <div class="hero-img-overlay"></div>
+            </div>
+            <div class="gallery-item">
+              <img src="https://raw.githubusercontent.com/GateGith/arc161-assets/main/138_SGP4312_2.jpg"
+                   alt="قبل استعمال الحزام" />
+              <div class="hero-img-overlay"></div>
+            </div>
+            <div class="gallery-item">
+              <img src="https://raw.githubusercontent.com/GateGith/arc161-assets/main/138_SGP6841.jpg"
+                   alt="بعد استعمال الحزام" />
+              <div class="hero-img-overlay"></div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="swipe-hint">اسحب الصور من اليمين لليسار لمشاهدة قبل/بعد واستعمال الحزام.</div>
+      <div class="swipe-hint">اسحب الصور من اليمين لليسار وتشوف قبل/بعد واستعمال الحزام.</div>
 
       <div class="badge">
         <span class="dot-badge"></span>
@@ -401,20 +412,19 @@
       <h1>قعدة طويلة؟ خلّي ظهرك يشكرك مع ARC161</h1>
 
       <p class="subhead">
-        حزام ARC161 يعطي دعم إضافي لأعلى الظهر والكتفين ويذكّر جسمك بالقعدة الصحيحة
+        حزام ARC161 يعطي دعمًا إضافيًا لأعلى الظهر والكتفين ويذكّر جسمك بالقعدة الصحيحة
         في المكتب، الجامعة أو السيارة بدون أجهزة معقدة أو أدوية.
       </p>
 
       <div class="aud-target">
-        خصوصًا لو تقضي أكثر من 4 ساعات في اليوم قدّام الكمبيوتر أو في الطريق.
+        حرية تامة: لا دفع مسبق، أنت حر تطلب أو ترفض عند الاستلام بدون أي ضغط.
       </div>
 
-      <!-- مشاكل / حل / خدمة -->
       <div class="pill-row">
-        <div class="pill pill-red">ألم أو ثقل في الظهر آخر اليوم؟</div>
+        <div class="pill pill-red">وجع أو ثقل في الظهر آخر النهار؟</div>
         <div class="pill pill-red">تلقّى روحك دايمًا منحني قدّام الهاتف؟</div>
         <div class="pill pill-green">دعم شبه طبي للظهر والكتفين</div>
-        <div class="pill pill-blue">توصيل لكل الولايات + دفع عند الاستلام</div>
+        <div class="pill">مناسب للرجال والنساء، يلبس تحت القميص</div>
       </div>
 
       <h2 class="section-title">كيف يمكن أن يساعدك؟</h2>
@@ -427,44 +437,40 @@
         <li>يتعوّد جسمك تدريجيًا على قوام أفضل حتى بدون الحزام مع الوقت.</li>
       </ul>
 
-      <h2 class="section-title">طريقة الاستعمال بسيطة</h2>
+      <h2 class="section-title">طريقة الاستعمال ببساطة</h2>
       <ul>
         <li>يلبَس فوق ملابس خفيفة، تُشد الأشرطة حتى يكون ثابتًا ومريحًا بدون ضغط مزعج.</li>
         <li>ابدأ بـ 30–45 دقيقة في اليوم، ثم زِد المدة تدريجيًا حسب شعورك بالراحة.</li>
         <li>يمكن تعديله بسهولة ليتماشى مع أكثر من شخص في البيت عن طريق الأشرطة.</li>
       </ul>
 
-      <!-- صندوق ثقة مكيّف للجزائري -->
       <div class="trust-box">
-        <div class="trust-title">ثقة ووضوح قبل كل شيء</div>
-        <div>• الدفع عند الاستلام بعد ما تَشوف المنتج بعينك، بدون بطاقات ولا تحويلات.</div>
-        <div>• ما نوعدكش بمعجزة، لكن نوعدك بدعم إضافي للظهر يساعدك في الجلوس الطويل لو التزمت بالاستعمال.</div>
+        <div class="trust-title">حرية الزبون قبل كل شيء</div>
+        <div>• لا بطاقات، لا تحويلات، فقط تدفع عند استلام الحزام في يدك بعد أن تشوفه بعينيك.</div>
+        <div>• لا نَعِد بمعجزة، لكن نقدّم دعمًا إضافيًا للظهر يساعدك مع الجلوس الطويل لو التزمت بالاستعمال.</div>
         <div class="trust-row">
-          <span>أي سؤال؟ تقدر تراسلنا على واتساب قبل ما تطلب.</span>
-          <span>تواصل محترم وخدمة جزائرية.</span>
+          <span>أي سؤال قبل الطلب؟ راسلنا على واتساب بكل حرية.</span>
+          <span>تعامل محترم وخدمة جزائرية.</span>
         </div>
       </div>
 
-      <!-- السعر داخل إطار -->
       <div class="price-box">
         <div class="price-row">
           <div class="price">3,999 دج</div>
           <div class="old-price">4,599 دج</div>
         </div>
         <div class="saving">تخفيض خاص على الكمية القليلة المتوفرة حاليًا.</div>
-        <div class="urgency">إذا انتهت هذه الكمية يرجع السعر العادي، لذلك احجز قطعتك الآن.</div>
-        <div class="no-prepay">لا يوجد أي دفع مسبق – تدفع فقط عند استلام الحزام في يدك.</div>
+        <div class="urgency">إذا انتهت هذه الكمية يرجع السعر العادي، احجز قطعتك الآن إن أعجبك المنتج.</div>
+        <div class="no-prepay">أنت حر: لا دفع مسبق، ويمكنك رفض الطلب عند الباب إذا لم يعجبك الشكل.</div>
       </div>
 
-      <!-- نموذج الطلب -->
       <div class="order-form">
-        <div class="order-form-title">اطلب حزامك الآن (استغرق أقل من دقيقة)</div>
+        <div class="order-form-title">اطلب حزامك الآن (أقل من دقيقة)</div>
 
         <div class="size-hint">
-          اختر مقاسك بعناية، لا توجد خدمة استبدال أو استرجاع حاليًا.
+          لا توجد خدمة استبدال أو استرجاع حاليًا، اختر مقاسك بعناية أو راسلنا على واتساب للمساعدة.
         </div>
 
-        <!-- عدّل action حسب طريقة استقبال الطلبات -->
         <form method="post" action="#">
           <label for="name">الاسم الكامل</label>
           <input id="name" name="name" type="text" required />
@@ -494,7 +500,7 @@
       </div>
 
       <div class="no-return-note">
-        ملاحظة: لا توجد خدمة استبدال أو استرجاع حاليًا. إذا لم تكن متأكدًا من المقاس، يمكنك مراسلتنا على واتساب وسنساعدك قبل أن تطلب.
+        ملاحظة: لا توجد خدمة استبدال أو استرجاع حاليًا. إذا لم تكن متأكدًا من المقاس، تواصل معنا قبل تأكيد الطلب.
       </div>
 
       <div class="footer-note">
@@ -504,4 +510,3 @@
   </div>
 </body>
 </html>
-
