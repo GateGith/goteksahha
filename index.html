@@ -4,16 +4,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>ARC161 – حزام ظهر شبه طبي لتصحيح القعدة</title>
+  <title>ARC161 – حزام ظهر شبه طبي لتخفيف آلام الظهر</title>
 
   <style>
     :root {
-      --bg-top: #e0f2fe;
-      --bg-bottom: #f9fafb;
+      /* ألوان شبه طبية مريحة */
+      --bg-top: #e0f2f1;          /* أخضر فيروزي فاتح */
+      --bg-bottom: #f9fafb;       /* رمادي فاتح */
       --card: #ffffff;
-      --accent: #22c55e;
+      --accent: #22c55e;          /* أخضر صحة */
       --accent-dark: #16a34a;
-      --primary-blue: #0ea5e9;
+      --primary-blue: #0ea5e9;    /* أزرق طبي */
+      --primary-blue-dark: #0369a1;
       --text-main: #0f172a;
       --text-soft: #4b5563;
       --border: rgba(148, 163, 184, 0.6);
@@ -25,9 +27,9 @@
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top, rgba(14, 165, 233, 0.18), transparent 55%),
+        radial-gradient(circle at top, rgba(14, 165, 233, 0.16), transparent 55%),
         radial-gradient(circle at bottom, rgba(34, 197, 94, 0.16), transparent 60%),
-        linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
+        linear-gradient(165deg, var(--bg-top), var(--bg-bottom));
       color: var(--text-main);
       line-height: 1.6;
       min-height: 100vh;
@@ -38,7 +40,7 @@
 
     .wrapper {
       width: 100%;
-      max-width: 430px;
+      max-width: 430px;  /* يشبه عرض هاتف */
       padding: 12px;
     }
 
@@ -49,25 +51,46 @@
       border: 1px solid var(--border);
       box-shadow:
         0 20px 50px rgba(15, 23, 42, 0.18),
-        0 0 0 1px rgba(148, 163, 184, 0.4);
+        0 0 0 1px rgba(148, 163, 184, 0.35);
     }
 
     .center { text-align: center; }
 
-    .hero-img-wrap {
-      position: relative;
+    /* شريط صور قابلة للسحب مثل بوست إنستغرام */
+    .gallery {
+      margin-bottom: 10px;
       border-radius: 18px;
       overflow: hidden;
-      background: #e5f4ff;
       border: 1px solid rgba(148, 163, 184, 0.7);
-      margin-bottom: 10px;
+      background: #e5f4ff;
     }
 
-    .hero-img-wrap img {
+    .gallery-track {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .gallery-track::-webkit-scrollbar {
+      height: 6px;
+    }
+    .gallery-track::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.8);
+      border-radius: 999px;
+    }
+
+    .gallery-item {
+      min-width: 100%;
+      scroll-snap-align: center;
+      position: relative;
+    }
+
+    .gallery-item img {
       width: 100%;
-      display: block;
-      max-height: 360px;
+      height: 260px;
       object-fit: cover;
+      display: block;
     }
 
     .hero-img-overlay {
@@ -79,20 +102,39 @@
       pointer-events: none;
     }
 
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      padding: 5px 0 6px;
+      background: rgba(15, 23, 42, 0.04);
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.7);
+    }
+
+    .dot.active {
+      background: var(--primary-blue);
+    }
+
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(219, 234, 254, 0.95);
-      color: #0369a1;
-      border: 1px solid rgba(59, 130, 246, 0.4);
+      background: rgba(209, 250, 229, 0.95);
+      color: var(--primary-blue-dark);
+      border: 1px solid rgba(34, 197, 94, 0.4);
       font-size: 11px;
       margin-bottom: 8px;
     }
 
-    .badge span.dot {
+    .badge span.dot-badge {
       width: 6px;
       height: 6px;
       border-radius: 999px;
@@ -110,6 +152,33 @@
       margin: 0 0 10px;
     }
 
+    /* خانة المعلومات في الأعلى */
+    .info-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 10px;
+      font-size: 11px;
+    }
+
+    .info-chip {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(191, 219, 254, 0.7);
+      color: var(--primary-blue-dark);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    /* السعر في الأسفل داخل إطار واضح */
+    .price-box {
+      border-radius: 16px;
+      border: 1px solid rgba(34, 197, 94, 0.75);
+      background: linear-gradient(135deg, rgba(22, 163, 74, 0.06), rgba(191, 219, 254, 0.4));
+      padding: 8px 10px;
+      margin: 10px 0 10px;
+    }
+
     .price-row {
       display: flex;
       justify-content: center;
@@ -121,7 +190,7 @@
     .price {
       font-size: 22px;
       font-weight: 900;
-      color: var(--accent);
+      color: var(--accent-dark);
     }
 
     .old-price {
@@ -133,7 +202,6 @@
     .saving {
       font-size: 11px;
       color: #16a34a;
-      margin-bottom: 8px;
     }
 
     .info-line {
@@ -142,47 +210,17 @@
       margin-bottom: 10px;
     }
 
-    .btn-primary {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 6px;
-      width: 100%;
-      border-radius: 999px;
-      padding: 11px 14px;
-      border: none;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: 800;
-      text-decoration: none;
-      box-shadow:
-        0 16px 35px rgba(34, 197, 94, 0.45),
-        0 0 0 1px rgba(34, 197, 94, 0.4);
-      letter-spacing: 0.01em;
-      margin-bottom: 6px;
-    }
-
-    .btn-primary:active {
-      transform: translateY(1px);
-      box-shadow: 0 8px 18px rgba(34, 197, 94, 0.4);
-    }
-
-    .hint {
-      font-size: 11px;
-      color: #6b7280;
-      margin-bottom: 10px;
-    }
-
     .section-title {
       font-size: 15px;
       margin: 10px 0 4px;
+      text-align: start;
     }
 
     .text-small {
       font-size: 12px;
       color: var(--text-soft);
       margin: 0 0 6px;
+      text-align: start;
     }
 
     ul {
@@ -191,6 +229,7 @@
       margin: 0 0 6px;
       font-size: 12px;
       color: var(--text-soft);
+      text-align: start;
     }
 
     ul li::before {
@@ -199,25 +238,7 @@
       font-weight: bold;
     }
 
-    ul li {
-      margin-bottom: 3px;
-      text-align: start;
-    }
-
-    .bottom-cta {
-      margin-top: 10px;
-      padding: 10px 10px 12px;
-      border-radius: 16px;
-      background: linear-gradient(145deg, rgba(34, 197, 94, 0.16), rgba(191, 219, 254, 0.5));
-      border: 1px solid rgba(34, 197, 94, 0.5);
-      font-size: 12px;
-    }
-
-    .footer-note {
-      margin-top: 8px;
-      font-size: 10px;
-      color: #9ca3af;
-    }
+    ul li { margin-bottom: 3px; }
 
     .order-form {
       margin-top: 10px;
@@ -228,6 +249,13 @@
       text-align: start;
     }
 
+    .order-form-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--primary-blue-dark);
+    }
+
     .order-form label {
       display: block;
       font-size: 11px;
@@ -236,7 +264,7 @@
     }
 
     .order-form input,
-    .order-form textarea {
+    .order-form select {
       width: 100%;
       border-radius: 10px;
       border: 1px solid rgba(148, 163, 184, 0.8);
@@ -244,11 +272,7 @@
       font-family: inherit;
       font-size: 12px;
       margin-bottom: 7px;
-    }
-
-    .order-form textarea {
-      min-height: 50px;
-      resize: vertical;
+      background: #ffffff;
     }
 
     .order-form button {
@@ -257,84 +281,169 @@
       border-radius: 999px;
       padding: 9px 12px;
       border: none;
-      background: linear-gradient(135deg, var(--primary-blue), #0284c7);
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       color: #fff;
       font-size: 13px;
       font-weight: 700;
       cursor: pointer;
     }
+
+    .order-form button:active { transform: translateY(1px); }
+
+    .bottom-cta {
+      margin-top: 10px;
+      padding: 10px 10px 12px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(34, 197, 94, 0.14), rgba(191, 219, 254, 0.45));
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      font-size: 12px;
+      text-align: start;
+    }
+
+    .footer-note {
+      margin-top: 8px;
+      font-size: 10px;
+      color: #9ca3af;
+      text-align: start;
+    }
   </style>
 </head>
 <body>
+  <div class="wrapper">
+    <main class="card center">
 
-<div class="wrapper">
-  <main class="card center">
+      <!-- شريط صور يمكن سحبه -->
+      <div class="gallery">
+        <div class="gallery-track" id="galleryTrack">
+          <!-- صورة 1: من الموقع -->
+          <div class="gallery-item">
+            <img src="https://www.armororthopedics.com/dosyalar/urunler/img_13.jpg" alt="ARC161 – صورة المنتج" />
+            <div class="hero-img-overlay"></div>
+          </div>
+          <!-- صورة 2: من الموقع -->
+          <div class="gallery-item">
+            <img src="https://www.armororthopedics.com/dosyalar/urunler/img_1_13.jpg" alt="طريقة لبس ARC161" />
+            <div class="hero-img-overlay"></div>
+          </div>
+          <!-- صورة 3: قبل (من GitHub لاحقاً) -->
+          <div class="gallery-item">
+            <img src="https://raw.githubusercontent.com/USERNAME/REPO/main/before_1.jpg" alt="قبل استعمال الحزام" />
+            <div class="hero-img-overlay"></div>
+          </div>
+          <!-- صورة 4: بعد (من GitHub لاحقاً) -->
+          <div class="gallery-item">
+            <img src="https://raw.githubusercontent.com/USERNAME/REPO/main/after_1.jpg" alt="بعد استعمال الحزام" />
+            <div class="hero-img-overlay"></div>
+          </div>
+        </div>
+        <!-- نقاط إرشادية (ثابتة فقط للشكل) -->
+        <div class="dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
 
-    <!-- صورة المنتج -->
-    <div class="hero-img-wrap">
-      <img src="posture-back-man.jpg" alt="ARC161 حزام تصحيح القعدة" />
-      <div class="hero-img-overlay"></div>
-    </div>
+      <!-- البادج -->
+      <div class="badge">
+        <span class="dot-badge"></span>
+        منتج شبه طبي يساعد على دعم وتقويم الظهر أثناء الجلوس اليومي
+      </div>
 
-    <div class="badge">
-      <span class="dot"></span>
-      منتج شبه طبي لدعم وتقويم الظهر
-    </div>
+      <!-- العنوان والنص -->
+      <h1>قعدة أريح، ظهر أخف مع ARC161</h1>
 
-    <h1>قعدة مريحة، ظهر مستقيم مع ARC161</h1>
+      <p class="subhead">
+        حزام ARC161 صُمّم ليخفف الضغط على أسفل الظهر والكتفين ويذكّر جسمك بالقعدة
+        الصحيحة في المكتب، الدراسة أو السياقة – بدون أجهزة معقدة أو أدوية.
+      </p>
 
-    <p class="subhead">
-      حزام ARC161 يساعدك تصحّح القعدة وتخفّف الضغط على أسفل الظهر والكتفين
-      أثناء الجلوس أو السياقة.
-    </p>
+      <!-- خانة المعلومات أعلى الصفحة -->
+      <div class="info-chips">
+        <div class="info-chip">دعم شبه طبي للظهر والكتفين</div>
+        <div class="info-chip">مناسب للرجال والنساء</div>
+        <div class="info-chip">يُلبس تحت أو فوق الملابس</div>
+        <div class="info-chip">التوصيل لكل الولايات – دفع عند الاستلام</div>
+      </div>
 
-    <div class="price-row">
-      <div class="price">3,999 دج</div>
-      <div class="old-price">4,599 دج</div>
-    </div>
+      <!-- فوائد -->
+      <h2 class="section-title">ماذا يستفيد جسمك؟</h2>
+      <p class="text-small">
+        مع الاستعمال المنتظم للحزام أثناء القعدة:
+      </p>
+      <ul>
+        <li>تقل درجة الانحناء للأمام عند استعمال الكمبيوتر أو الهاتف.</li>
+        <li>يخف الشد اليومي على أعلى الظهر والكتفين، خاصة آخر اليوم.</li>
+        <li>يتعوّد جسمك تدريجيًا على قوام مستقيم بدون تفكير مستمر.</li>
+      </ul>
 
-    <div class="saving">تخفيض محدود – الدفع عند الاستلام</div>
+      <!-- طريقة الاستعمال -->
+      <h2 class="section-title">طريقة الاستعمال ببساطة</h2>
+      <ul>
+        <li>يلبَس فوق ملابس خفيفة، تُشد الأشرطة حتى يكون ثابت ومريح بدون ضغط زائد.</li>
+        <li>ابدأ بـ 30–45 دقيقة في اليوم ثم زِد المدة تدريجيًا حسب راحتك.</li>
+        <li>يمكن تعديل المقاس من الأشرطة ليتناسب مع أكثر من شخص في البيت.</li>
+      </ul>
 
-    <h2 class="section-title">ماذا سيتغير عندك؟</h2>
-    <ul>
-      <li>تصحيح تدريجي للقعدة بدون إزعاج</li>
-      <li>تخفيف الضغط اليومي على الظهر والكتفين</li>
-      <li>مناسب للرجال والنساء وتحت الملابس</li>
-    </ul>
+      <!-- السعر في الأسفل داخل إطار -->
+      <div class="price-box">
+        <div class="price-row">
+          <div class="price">3,999 دج</div>
+          <div class="old-price">4,599 دج</div>
+        </div>
+        <div class="saving">تخفيض محدود على الكمية الحالية – اطلب الآن والدفع عند الاستلام.</div>
+      </div>
 
-    <h2 class="section-title">طريقة الاستعمال</h2>
-    <div class="hero-img-wrap">
-      <img src="posture-back-woman.jpg" alt="طريقة لبس حزام ARC161" />
-      <div class="hero-img-overlay"></div>
-    </div>
+      <!-- نموذج الطلب -->
+      <div class="order-form">
+        <div class="order-form-title">املأ بياناتك لتأكيد الطلب (الدفع عند الاستلام)</div>
 
-    <ul>
-      <li>يلبس فوق ملابس خفيفة</li>
-      <li>يشد تدريجياً حسب الراحة</li>
-      <li>يستعمل يومياً 30–60 دقيقة</li>
-    </ul>
+        <!-- عدّل action ليناسب طريقة استلام الطلبات عندك -->
+        <form method="post" action="#">
+          <label for="name">الاسم الكامل</label>
+          <input id="name" name="name" type="text" required />
 
-    <div class="order-form">
-      <form>
-        <label>الاسم الكامل</label>
-        <input type="text" required />
+          <label for="phone">رقم الهاتف</label>
+          <input id="phone" name="phone" type="tel" required />
 
-        <label>رقم الهاتف</label>
-        <input type="tel" required />
+          <label for="wilaya">الولاية</label>
+          <input id="wilaya" name="wilaya" type="text" required />
 
-        <label>الولاية</label>
-        <input type="text" required />
+          <label for="size">المقاس</label>
+          <select id="size" name="size" required>
+            <option value="">اختر المقاس المناسب</option>
+            <option value="S">S (صغير)</option>
+            <option value="M">M (متوسط)</option>
+            <option value="L">L (كبير)</option>
+            <option value="XL">XL (كبير جدًا)</option>
+          </select>
 
-        <button>إرسال الطلب الآن</button>
-      </form>
-    </div>
+          <button type="submit">إرسال الطلب الآن</button>
+        </form>
+      </div>
 
-    <div class="footer-note">
-      منتج شبه طبي، لا يُعتبر بديلاً عن الاستشارة الطبية.
-    </div>
+      <!-- دعوة أخيرة -->
+      <div class="bottom-cta">
+        لو أنت أو شخص من عائلتك تعانون من تعب في الظهر بسبب القعدة،
+        تجربة ARC161 لأسابيع قليلة يمكن أن تصنع فرقًا واضحًا في الراحة اليومية.
+      </div>
 
-  </main>
-</div>
+      <div class="footer-note">
+        منتج شبه طبي يساعد على دعم وتقويم الظهر، ولا يُعتبر بديلاً عن الاستشارة أو العلاج الطبي المتخصّص.
+      </div>
+    </main>
+  </div>
 
+  <!-- سكربت صغير لتغيير النقاط حسب موضع السحب (اختياري بسيط) -->
+  <script>
+    const track = document.getElementById("galleryTrack");
+    const dots = document.querySelectorAll(".dots .dot");
+
+    track.addEventListener("scroll", () => {
+      const index = Math.round(track.scrollLeft / track.clientWidth);
+      dots.forEach((d, i) => d.classList.toggle("active", i === index));
+    });
+  </script>
 </body>
 </html>
