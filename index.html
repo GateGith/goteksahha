@@ -13,18 +13,16 @@
       --primary: #2563eb;
       --primary-soft: #60a5fa;
       --accent: #22c55e;
-      --accent-soft: #bbf7d0;
       --text-main: #0f172a;
       --text-soft: #4b5563;
       --border-soft: rgba(148, 163, 184, 0.45);
       --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin:0; padding:0; }
 
     body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, rgba(37, 99, 235, 0.08), transparent 55%), var(--bg);
       color: var(--text-main);
       line-height: 1.6;
@@ -32,12 +30,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 14px;
     }
 
     .wrapper {
       width: 100%;
       max-width: 440px;
-      padding: 14px;
       display: flex;
       justify-content: center;
     }
@@ -91,7 +89,10 @@
       object-fit: cover;
       border-radius: 10px;
       border: 1px solid rgba(148, 163, 184, 0.6);
+      transition: transform 0.3s ease;
     }
+
+    .thumbs img:hover { transform: scale(1.05); }
 
     .badge {
       margin-top: 10px;
@@ -110,7 +111,13 @@
       width: 7px;
       height: 7px;
       border-radius: 999px;
-      background: var(--accent);
+      background: #22c55e;
+      animation: pulse-dot 1.5s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
     }
 
     h1 {
@@ -146,7 +153,10 @@
       border: 1px solid rgba(148, 163, 184, 0.6);
       background: rgba(248, 250, 252, 0.95);
       color: #111827;
+      transition: all 0.3s ease;
     }
+
+    .pill:hover { transform: translateY(-2px); }
 
     .pill-red {
       border-color: rgba(248, 113, 113, 0.6);
@@ -307,6 +317,13 @@
       font-size: 12px;
       margin-bottom: 7px;
       background: #ffffff;
+      transition: border 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
     }
 
     button {
@@ -321,6 +338,12 @@
       font-weight: 700;
       cursor: pointer;
       box-shadow: 0 16px 32px rgba(37, 99, 235, 0.35);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.4);
     }
 
     button:active { transform: translateY(1px); }
@@ -385,8 +408,7 @@
     <main class="card center">
 
       <div class="hero">
-        <img src="https://www.armororthopedics.com/dosyalar/urunler/img_13.jpg"
-             alt="حزام ARC161 لدعم وتقويم الظهر" />
+        <img src="https://www.armororthopedics.com/dosyalar/urunler/img_13.jpg" alt="حزام ARC161" />
         <div class="hero-overlay"></div>
       </div>
       <div class="thumbs">
@@ -397,14 +419,13 @@
 
       <div class="badge">
         <span class="badge-dot"></span>
-        استثمار يومي هادئ في راحة ظهرك – منتج شبه طبي للدعم خلال الجلوس الطويل
+        استثمار يومي هادئ في راحة ظهرك
       </div>
 
       <h1>من نهاية يوم متشنّج… إلى ظهر أخف وتركيز أطول</h1>
 
       <p class="subhead">
-        ARC161 يساعد جسمك يتذكّر الجلوس الصحيح ويخفف الضغط على أعلى الظهر والكتفين،
-        حتى تعيش يومك كامل بدون أن يكون الوجع هو آخر شيء تحسّ به.
+        ARC161 يساعد جسمك يتذكّر الجلوس الصحيح ويخفف الضغط على أعلى الظهر والكتفين.
       </p>
 
       <div class="audience-note">
@@ -417,27 +438,24 @@
       </div>
 
       <div class="pill-row">
-        <div class="pill pill-red">ألم أو ثقل في أعلى الظهر آخر النهار؟</div>
-        <div class="pill pill-red">تلقّى روحك منحني قدّام الهاتف أو اللاب توب؟</div>
-        <div class="pill pill-green">دعم شبه طبي يساعد على تقويم الظهر</div>
-        <div class="pill">مناسب للرجال والنساء، يلبس تحت أو فوق القميص</div>
+        <div class="pill pill-red">ألم أو ثقل في أعلى الظهر؟</div>
+        <div class="pill pill-red">تلقّى روحك منحني؟</div>
+        <div class="pill pill-green">دعم شبه طبي لتقويم الظهر</div>
+        <div class="pill">يناسب الرجال والنساء</div>
       </div>
 
       <h2 class="section-title">ماذا يضيف هذا الحزام ليومك؟</h2>
-      <p class="text-small">
-        أنت لا تشتري قطعة قماش، بل تشتري طريقة مختلفة لإنهاء يومك:
-      </p>
       <ul>
-        <li>تخفيف الشد في أعلى الظهر يعني نهاية يوم أهدأ ونوم أريح.</li>
-        <li>وضعية أفضل تعطي حضورًا وثقة أكبر في العمل والجامعة.</li>
-        <li>كل ساعة بدون ألم تساعدك على التركيز في شغلك بدل التفكير في وجع الظهر.</li>
+        <li>تخفيف الشد في أعلى الظهر يعني نهاية يوم أهدأ.</li>
+        <li>وضعية أفضل تعطي حضورًا وثقة أكبر.</li>
+        <li>كل ساعة بدون ألم تساعدك على التركيز في شغلك.</li>
       </ul>
 
-      <h2 class="section-title">طريقة الاستعمال ببساطة</h2>
+      <h2 class="section-title">طريقة الاستعمال</h2>
       <ul>
-        <li>يلبس فوق ملابس خفيفة، ثم تُشد الأشرطة حتى يكون ثابتًا ومريحًا بدون ضغط مزعج.</li>
-        <li>ابدأ بـ 30–45 دقيقة في اليوم، ثم زد المدة تدريجيًا حسب راحتك.</li>
-        <li>يمكن تعديله بسهولة ليتماشى مع أكثر من شخص في البيت عن طريق الأشرطة.</li>
+        <li>يلبس فوق ملابس خفيفة، ثم تُشد الأشرطة.</li>
+        <li>ابدأ بـ 30–45 دقيقة يوميًا، ثم زد المدة تدريجيًا.</li>
+        <li>يمكن تعديله بسهولة ليتماشى مع أكثر من شخص.</li>
       </ul>
 
       <div class="price-card">
@@ -447,21 +465,21 @@
         </div>
         <div class="price-save">توفّر 1,000 دج على العرض الحالي.</div>
         <div class="ship-line">
-          الشحن: 300 دج داخل العاصمة، 800 دج لباقي الولايات – الدفع عند الاستلام فقط.
+          الشحن: 300 دج داخل العاصمة، 800 دج لباقي الولايات – الدفع عند الاستلام.
         </div>
       </div>
 
       <div class="trust-box">
         <div class="trust-title">وضوح كامل واحترام لقرارك</div>
-        <div>• لا بطاقات ولا تحويلات. تدفع فقط عند استلام الحزام في يدك بعد أن تراه.</div>
-        <div>• لا وعود سحرية، بل دعم إضافي للظهر إذا التزمت بالاستعمال اليومي.</div>
-        <div>• سعر واضح، شحن واضح، بدون أي مصاريف مخفية.</div>
+        <div>• تدفع فقط عند استلام الحزام في يدك.</div>
+        <div>• لا وعود سحرية، بل دعم إضافي للظهر.</div>
+        <div>• سعر واضح، بدون أي مصاريف مخفية.</div>
       </div>
 
       <div class="form-card">
         <div class="form-title">املأ بياناتك في أقل من دقيقة</div>
         <div class="size-hint">
-          لا توجد خدمة استبدال أو استرجاع حاليًا؛ إذا كنت مترددًا في المقاس راسلنا على واتساب قبل الطلب.
+          لا توجد خدمة استبدال أو استرجاع حاليًا؛ راسلنا على واتساب قبل الطلب إن كنت مترددًا.
         </div>
 
         <form id="orderForm" method="post" action="#">
@@ -497,29 +515,28 @@
           <span>3,990 دج</span>
         </div>
         <div class="summary-row">
-          <span>سعر التوصيل (حسب ولايتك):</span>
+          <span>سعر التوصيل:</span>
           <span id="shipPrice">اختر ولايتك أعلاه</span>
         </div>
         <div class="summary-row summary-total">
-          <span>المجموع الذي ستدفعه عند الاستلام:</span>
+          <span>المجموع عند الاستلام:</span>
           <span id="totalPrice">—</span>
         </div>
-        <div style="margin-top:4px;">
-          هذا هو المبلغ النهائي، لا توجد أي رسوم إضافية مخفية.
+        <div style="margin-top:4px;font-size:10px;color:#065f46;">
+          لا توجد أي رسوم إضافية مخفية.
         </div>
       </div>
 
       <div class="bottom-note">
-        فكّر في عدد الساعات التي تجلس فيها كل أسبوع. إذا حسّنت هذه الساعات، يتحسّن
-        بعدها مزاجك وتركيزك وحتى وقتك مع العائلة. ARC161 خطوة صغيرة في هذا الاتجاه.
+        فكّر في عدد الساعات التي تجلس فيها كل أسبوع. تحسينها يعني تحسين مزاجك وتركيزك وحتى وقتك مع العائلة.
       </div>
 
       <div class="no-return-note">
-        ملاحظة: لا توجد خدمة استبدال أو استرجاع حاليًا، لذلك تأكد من المقاس قبل تأكيد الطلب.
+        ملاحظة: لا توجد خدمة استبدال أو استرجاع حاليًا، تأكد من المقاس قبل تأكيد الطلب.
       </div>
 
       <div class="footer-note">
-        منتج شبه طبي يساعد على دعم وتقويم الظهر، ولا يُعتبر بديلاً عن الاستشارة أو العلاج الطبي المتخصّص.
+        منتج شبه طبي لدعم الظهر، ليس بديلاً عن الاستشارة الطبية المتخصصة.
       </div>
     </main>
   </div>
